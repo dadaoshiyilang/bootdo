@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="orderid" name="orderid" th:value="${ywmsOrder.orderid}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">订单号：</label>
+								<div class="col-sm-8">
+									<input id="ordersn" name="ordersn" th:value="${ywmsOrder.ordersn}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">订单金额：</label>
+								<div class="col-sm-8">
+									<input id="ordercount" name="ordercount" th:value="${ywmsOrder.ordercount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户id：</label>
+								<div class="col-sm-8">
+									<input id="userid" name="userid" th:value="${ywmsOrder.userid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">充值的缘豆数量：</label>
+								<div class="col-sm-8">
+									<input id="productname" name="productname" th:value="${ywmsOrder.productname}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">1支付宝,2微信,3IAP：</label>
+								<div class="col-sm-8">
+									<input id="paytype" name="paytype" th:value="${ywmsOrder.paytype}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">0.支付失败1.支付成功：</label>
+								<div class="col-sm-8">
+									<input id="state" name="state" th:value="${ywmsOrder.state}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">0.为推送,1.已经推送：</label>
+								<div class="col-sm-8">
+									<input id="pushstatus" name="pushstatus" th:value="${ywmsOrder.pushstatus}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建时间：</label>
+								<div class="col-sm-8">
+									<input id="createtime" name="createtime" th:value="${ywmsOrder.createtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">修改时间：</label>
+								<div class="col-sm-8">
+									<input id="updatetime" name="updatetime" th:value="${ywmsOrder.updatetime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">状态（1为可用0为不可用）：</label>
+								<div class="col-sm-8">
+									<input id="deleteflag" name="deleteflag" th:value="${ywmsOrder.deleteflag}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsOrder/edit.js">
+	</script>
+</body>
+</html>

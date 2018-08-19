@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header">
+
+
+
+</head>
+
+
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button shiro:hasPermission="ywms:ywmsOrder:add" type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>添加
+							</button>
+							<button shiro:hasPermission="ywms:ywmsOrder:batchRemove" type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+						</div>
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+
+
+
+						<table  >
+							<tr>
+								<td>
+
+
+									<label >眼缘id </label>
+									<input id="searchyyid" type="text"  >
+
+								</td>
+								<td>
+									<label>昵称 </label>
+									<input id="searchnickname" type="text"
+										 >
+								</td>
+								<td>
+									<label style="margin-left: 10px;">选择性别 </label>
+									<select data-placeholder="选择性别" id="searchusersex"
+											tabindex="2" >
+										<option value="">选择性别</option>
+										<option value="0">女</option>
+										<option value="1">男</option>
+									</select>
+								</td>
+								<td>
+									<label style="margin-left: 10px;">用户状态 </label>
+									<select data-placeholder="用户状态" id="searchdel"
+											tabindex="2" >
+										<option value="">选择用户状态</option>
+										<option value="0">冻结</option>
+										<option value="1">正常</option>
+									</select>
+								</td>
+								<td>
+									<label style="margin-left: 10px;">充值渠道 </label>
+									<select data-placeholder="充值渠道" id="searchpaytype"
+											tabindex="2" >
+										<option value="">选择充值方式</option>
+										<option value="1">眼缘内部支付宝</option>
+										<option value="2">眼缘内部微信</option>
+										<option value="3">苹果内购</option>
+										<option value="4">云支付支付宝</option>
+										<option value="5">云支付微信</option>
+										<option value="6">管理员直冲</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+
+								<td>
+									<label>充值日期起始 </label>
+									<input style="margin-top: 5px;"  id="start" type="date" value=""/>
+								</td>
+
+								<td>
+									<label   style="margin-left: 10px;">充值日期結束 </label>
+									<input style="margin-top: 5px;" id="end" type="date" value=""/>
+								</td>
+
+								<td></td>
+
+
+
+
+							</tr>
+
+
+						</table>
+
+
+
+					<br/>
+					<br/>
+					<br/>
+					<div id="today">
+
+					</div>
+
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywms:ywmsOrder:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywms:ywmsOrder:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywms:ywmsOrder:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsOrder/ywmsOrder.js"></script>
+</body>
+</html>

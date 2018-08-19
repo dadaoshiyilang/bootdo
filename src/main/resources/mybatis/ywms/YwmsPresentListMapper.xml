@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ywms.dao.YwmsPresentListDao">
+
+	<select id="get" resultType="com.bootdo.ywms.domain.YwmsPresentListDO">
+		select `id`,`presentname`,`presenturl`,`presentprice`,`presentstatus`,`starttime`,`endtime`,createuser,`createtime`,`updateuser`,`updatetime`,`ordernum`,`del` from ywms_present_list where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.ywms.domain.YwmsPresentListDO">
+		select `id`,`presentname`,`presenturl`,`presentprice`,`presentstatus`,`starttime`,`endtime`,createuser,`createtime`,`updateuser`,`updatetime`,`ordernum`,`del` from ywms_present_list
+        <where>
+			del=1
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="presentname != null and presentname != ''"> and presentname like CONCAT('%', #{presentname, jdbcType=VARCHAR}, '%') </if>
+		  		   <if test="presentstatus != null and presentstatus != ''"> and presentstatus = #{presentstatus} </if>
+
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="ordernum != null and ordernum != ''"> and ordernum = #{ordernum} </if>
+			<if test="starttime != null and starttime != '' and (endtime==null or endtime=='')"> and DATE_FORMAT(starttime,'%Y-%m-%d') = #{starttime} </if>
+			<if test="starttime != null and starttime != '' and endtime!=null and endtime!='' ">
+				and DATE_FORMAT(starttime,'%Y-%m-%d') >= #{starttime}    and DATE_FORMAT(endtime,'%Y-%m-%d') <![CDATA[ <= ]]>  #{endtime}
+			</if>
+
+
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by createtime desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_present_list
+		 <where>
+			 del=1
+			 <if test="id != null and id != ''"> and id = #{id} </if>
+			 <if test="presentname != null and presentname != ''"> and presentname like CONCAT('%', #{presentname, jdbcType=VARCHAR}, '%') </if>
+			 <if test="presentstatus != null and presentstatus != ''"> and presentstatus = #{presentstatus} </if>
+
+			 <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+			 <if test="ordernum != null and ordernum != ''"> and ordernum = #{ordernum} </if>
+			 <if test="starttime != null and starttime != '' and (endtime==null or endtime=='')"> and DATE_FORMAT(starttime,'%Y-%m-%d') = #{starttime} </if>
+			 <if test="starttime != null and starttime != '' and endtime!=null and endtime!='' ">
+				 and DATE_FORMAT(starttime,'%Y-%m-%d') >= #{starttime}    and DATE_FORMAT(endtime,'%Y-%m-%d') <![CDATA[ <= ]]>  #{endtime}
+			 </if>
+
+		 </where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.ywms.domain.YwmsPresentListDO" useGeneratedKeys="true" keyProperty="id">
+		insert into ywms_present_list
+		(
+			`presentname`, 
+			`presenturl`, 
+			`presentprice`, 
+			`presentstatus`, 
+			`starttime`, 
+			`endtime`,
+			createuser,
+			`createtime`, 
+			`updateuser`, 
+			`updatetime`, 
+			`ordernum`, 
+			`del`
+		)
+		values
+		(
+			#{presentname}, 
+			#{presenturl}, 
+			#{presentprice}, 
+			#{presentstatus}, 
+			#{starttime}, 
+			#{endtime},
+			#{createuser},
+
+			#{createtime}, 
+			#{updateuser}, 
+			#{updatetime}, 
+			#{ordernum}, 
+			#{del}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.ywms.domain.YwmsPresentListDO">
+		update ywms_present_list 
+		<set>
+			<if test="presentname != null">`presentname` = #{presentname}, </if>
+			<if test="presenturl != null">`presenturl` = #{presenturl}, </if>
+			<if test="presentprice != null">`presentprice` = #{presentprice}, </if>
+			<if test="presentstatus != null">`presentstatus` = #{presentstatus}, </if>
+			<if test="starttime != null">`starttime` = #{starttime}, </if>
+			<if test="endtime != null">`endtime` = #{endtime}, </if>
+			<if test="createuser != null">`createuser` = #{createuser}, </if>
+			<if test="createtime != null">`createtime` = #{createtime}, </if>
+			<if test="updateuser != null">`updateuser` = #{updateuser}, </if>
+			<if test="updatetime != null">`updatetime` = #{updatetime}, </if>
+			<if test="ordernum != null">`ordernum` = #{ordernum}, </if>
+			<if test="del != null">`del` = #{del}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove111">
+		delete from ywms_present_list where id = #{value}
+	</delete>
+
+	<update id="remove">
+		update  ywms_present_list  set   del = 0  where id = #{value}
+	</update>
+
+	<delete id="batchRemove">
+		delete from ywms_present_list where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+
+	<update id="batchOnline" parameterType="java.util.ArrayList">
+		update ywms_present_list set presentstatus =#{status} where id in
+		<foreach item="did" collection="ids" index="index" open="(" separator="," close=")">
+			#{did}
+		</foreach>
+	</update>
+
+</mapper>

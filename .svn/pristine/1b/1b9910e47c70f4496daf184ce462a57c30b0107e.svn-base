@@ -1,0 +1,57 @@
+package com.bootdo.ywms.dao;
+
+import com.bootdo.ywms.domain.YwmsJgDO;
+import com.bootdo.ywms.domain.YwmsUserWithdrawalDO;
+import com.bootdo.ywms.domain.YwmswithdrawnumDO;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 
+ * @author ffff
+ * @email 1992lcg@163.com
+ * @date 2018-07-16 14:03:50
+ */
+@Mapper
+public interface YwmsUserWithdrawalDao {
+
+	YwmsUserWithdrawalDO get(Integer id);
+	
+	List<YwmsUserWithdrawalDO> list(Map<String,Object> map);
+
+
+	List<YwmsUserWithdrawalDO> listrecord(Map<String,Object> map);
+
+	int count(Map<String,Object> map);
+
+	int countrecord(Map<String,Object> map);
+
+	int save(YwmsUserWithdrawalDO ywmsUserWithdrawal);
+	
+	int update(YwmsUserWithdrawalDO ywmsUserWithdrawal);
+	
+	int remove(Integer id);
+	
+	int batchRemove(Integer[] ids);
+
+	int insertWithdrawJiguangInfo(YwmsJgDO ji);
+
+	int addunreadsysinfo(String userid);
+
+	int no(Integer id);
+
+	int yes(Integer id);
+
+
+	//统计所有
+	YwmswithdrawnumDO num1(Map<String, Object> map);
+
+	//统计当日
+	YwmswithdrawnumDO num2(Map<String, Object> map);
+
+
+
+
+}

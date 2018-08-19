@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ywms.dao.YwmsJiguanginfoDao">
+
+	<select id="get" resultType="com.bootdo.ywms.domain.YwmsJiguanginfoDO">
+		select `id`,`touserid`,`nickname`,`portraiturl`,`thumbnailurl`,`newsid`,`type`,`infotype`,`datatype`,`yuanbi`,`commentid`,`commentcontext`,`createtime`,`del` from ywms_jiguanginfo where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.ywms.domain.YwmsJiguanginfoDO">
+		select `id`,`touserid`,`nickname`,`portraiturl`,`thumbnailurl`,`newsid`,`type`,`infotype`,`datatype`,`yuanbi`,`commentid`,`commentcontext`,`createtime`,`del` from ywms_jiguanginfo
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="touserid != null and touserid != ''"> and touserid = #{touserid} </if>
+		  		  <if test="nickname != null and nickname != ''"> and nickname = #{nickname} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and portraiturl = #{portraiturl} </if>
+		  		  <if test="thumbnailurl != null and thumbnailurl != ''"> and thumbnailurl = #{thumbnailurl} </if>
+		  		  <if test="newsid != null and newsid != ''"> and newsid = #{newsid} </if>
+		  		  <if test="type != null and type != ''"> and type = #{type} </if>
+		  		  <if test="infotype != null and infotype != ''"> and infotype = #{infotype} </if>
+		  		  <if test="datatype != null and datatype != ''"> and datatype = #{datatype} </if>
+		  		  <if test="yuanbi != null and yuanbi != ''"> and yuanbi = #{yuanbi} </if>
+		  		  <if test="commentid != null and commentid != ''"> and commentid = #{commentid} </if>
+		  		  <if test="commentcontext != null and commentcontext != ''"> and commentcontext = #{commentcontext} </if>
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="del != null and del != ''"> and del = #{del} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_jiguanginfo
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="touserid != null and touserid != ''"> and touserid = #{touserid} </if>
+		  		  <if test="nickname != null and nickname != ''"> and nickname = #{nickname} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and portraiturl = #{portraiturl} </if>
+		  		  <if test="thumbnailurl != null and thumbnailurl != ''"> and thumbnailurl = #{thumbnailurl} </if>
+		  		  <if test="newsid != null and newsid != ''"> and newsid = #{newsid} </if>
+		  		  <if test="type != null and type != ''"> and type = #{type} </if>
+		  		  <if test="infotype != null and infotype != ''"> and infotype = #{infotype} </if>
+		  		  <if test="datatype != null and datatype != ''"> and datatype = #{datatype} </if>
+		  		  <if test="yuanbi != null and yuanbi != ''"> and yuanbi = #{yuanbi} </if>
+		  		  <if test="commentid != null and commentid != ''"> and commentid = #{commentid} </if>
+		  		  <if test="commentcontext != null and commentcontext != ''"> and commentcontext = #{commentcontext} </if>
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="del != null and del != ''"> and del = #{del} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.ywms.domain.YwmsJiguanginfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into ywms_jiguanginfo
+		(
+			`touserid`, 
+			`nickname`, 
+			`portraiturl`, 
+			`thumbnailurl`, 
+			`newsid`, 
+			`type`, 
+			`infotype`, 
+			`datatype`, 
+			`yuanbi`, 
+			`commentid`, 
+			`commentcontext`, 
+			`createtime`, 
+			`del`
+		)
+		values
+		(
+			#{touserid}, 
+			#{nickname}, 
+			#{portraiturl}, 
+			#{thumbnailurl}, 
+			#{newsid}, 
+			#{type}, 
+			#{infotype}, 
+			#{datatype}, 
+			#{yuanbi}, 
+			#{commentid}, 
+			#{commentcontext}, 
+			#{createtime}, 
+			#{del}
+		)
+	</insert>
+
+
+
+	<insert id="insertinfoByBatch" parameterType="java.util.List">
+		insert into ywms_jiguanginfo
+		(
+		`touserid`,
+		`type`,
+		`commentcontext`,
+		`createtime`,
+		`del`
+		)
+		values
+		<foreach collection="list" item="jg" index="index" separator=",">
+			(
+			#{jg.touserid},
+			1,
+			#{jg.commentcontext},
+			now(),
+			1
+			)
+		</foreach>
+	</insert>
+
+
+	<update id="addunreadsysinfobybatch">
+		UPDATE   `ywms_user`  SET unreadsysinfo =unreadsysinfo+1 where userid in
+		<foreach collection="list" index="index" item="jg"
+				 separator="," open="(" close=")">
+			#{jg.touserid}
+		</foreach>
+	</update>
+
+
+	<insert id="insertinfo" parameterType="com.bootdo.ywms.domain.YwmsJiguanginfoDO" useGeneratedKeys="true" keyProperty="id">
+		insert into ywms_jiguanginfo
+		(
+		`touserid`,
+		`type`,
+		`commentcontext`,
+		`createtime`,
+		`del`
+		)
+		values
+		(
+		#{touserid},
+		1,
+		#{commentcontext},
+		now(),
+		1
+		)
+	</insert>
+
+	<update id="addunreadsysinfo">
+		UPDATE   `ywms_user`  SET unreadsysinfo =unreadsysinfo+1 where userid = #{value}
+	</update>
+
+
+
+
+
+	<update id="update" parameterType="com.bootdo.ywms.domain.YwmsJiguanginfoDO">
+		update ywms_jiguanginfo 
+		<set>
+			<if test="touserid != null">`touserid` = #{touserid}, </if>
+			<if test="nickname != null">`nickname` = #{nickname}, </if>
+			<if test="portraiturl != null">`portraiturl` = #{portraiturl}, </if>
+			<if test="thumbnailurl != null">`thumbnailurl` = #{thumbnailurl}, </if>
+			<if test="newsid != null">`newsid` = #{newsid}, </if>
+			<if test="type != null">`type` = #{type}, </if>
+			<if test="infotype != null">`infotype` = #{infotype}, </if>
+			<if test="datatype != null">`datatype` = #{datatype}, </if>
+			<if test="yuanbi != null">`yuanbi` = #{yuanbi}, </if>
+			<if test="commentid != null">`commentid` = #{commentid}, </if>
+			<if test="commentcontext != null">`commentcontext` = #{commentcontext}, </if>
+			<if test="createtime != null">`createtime` = #{createtime}, </if>
+			<if test="del != null">`del` = #{del}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from ywms_jiguanginfo where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from ywms_jiguanginfo where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+
+
+
+</mapper>

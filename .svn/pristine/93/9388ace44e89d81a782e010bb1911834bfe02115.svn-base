@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ywms.dao.YwmsUserDao">
+
+	<select id="get" resultType="com.bootdo.ywms.domain.YwmsUserDO">
+		select `userid`,`yyid`,`phonenumber`,`userpassword`,`portraiturl`,`nickname`,`albumpicture`,`usersex`,`age`,`userbirthday`,`constellation`,`userloc`,`usersite`,`userheight`,`userweight`,`sanwei`,`occupation`,`longitude`,`latitude`,`interest`,`signature`,`concerncount`,`fans`,`piccount`,`vediocount`,`priceforchat`,`priceforvedio`,`lookcount`,`adminaffirm`,`attestationpicture1`,`attestationpicture2`,`creditcard`,`realname`,`withdrawacount`,`recharge`,`withdraw`,`deviceid`,`deleteflag`,`accesscode`,`lastlogintime`,`createtime`,`updatetime`,`rytoken`,`reportedtime`,`vip`,`viptype`,`paytosee`,`qqopenid`,`weixinopenid`,`weiboopenid`,`online`,`lastonlinetime`,`lastofflinetime`,`onlinecount`,`feedback`,`evaluatecount`,`whcooperation`,`whcompany`,`unreadsysinfo`,`unreadnewsinfo` from ywms_user where userid = #{value}
+	</select>
+
+
+	<select id="get1" resultType="com.bootdo.ywms.domain.YwmsUserDO">
+		select `userid`,`yyid`,`phonenumber`,`userpassword`,`portraiturl`,`nickname`,`albumpicture`,`usersex`,`age`,`userbirthday`,`constellation`,`userloc`,`usersite`,`userheight`,`userweight`,`sanwei`,`occupation`,`longitude`,`latitude`,`interest`,`signature`,`concerncount`,`fans`,`piccount`,`vediocount`,`priceforchat`,`priceforvedio`,`lookcount`,`adminaffirm`,`attestationpicture1`,`attestationpicture2`,`creditcard`,`realname`,`withdrawacount`,`recharge`,`withdraw`,`deviceid`,`deleteflag`,`accesscode`,`lastlogintime`,`createtime`,`updatetime`,`rytoken`,`reportedtime`,`vip`,`viptype`,`paytosee`,`qqopenid`,`weixinopenid`,`weiboopenid`,`online`,`lastonlinetime`,`lastofflinetime`,`onlinecount`,`feedback`,`evaluatecount`,`whcooperation`,`whcompany`,`unreadsysinfo`,`unreadnewsinfo` from ywms_user where yyid = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.ywms.domain.YwmsUserDO">
+		select `userid`,`yyid`,`phonenumber`,`userpassword`,`portraiturl`,`nickname`,`albumpicture`,`usersex`,`age`,`userbirthday`,`constellation`,`userloc`,`usersite`,`userheight`,`userweight`,`sanwei`,`occupation`,`longitude`,`latitude`,`interest`,`signature`,`concerncount`,`fans`,`piccount`,`vediocount`,`priceforchat`,`priceforvedio`,`lookcount`,`adminaffirm`,`attestationpicture1`,`attestationpicture2`,`creditcard`,`realname`,`withdrawacount`,`recharge`,`withdraw`,`deviceid`,`deleteflag`,`accesscode`,`lastlogintime`,`createtime`,`updatetime`,`rytoken`,`reportedtime`,`vip`,`viptype`,`paytosee`,`qqopenid`,`weixinopenid`,`weiboopenid`,`online`,`lastonlinetime`,`lastofflinetime`,`onlinecount`,`feedback`,`evaluatecount`,`whcooperation`,`whcompany`,`unreadsysinfo`,`unreadnewsinfo` from ywms_user
+        <where>  
+		  		  <if test="userid != null and userid != ''"> and userid = #{userid} </if>
+		  		  <if test="yyid != null and yyid != ''"> and yyid = #{yyid} </if>
+		  		  <if test="phonenumber != null and phonenumber != ''"> and phonenumber = #{phonenumber} </if>
+		  		  <if test="userpassword != null and userpassword != ''"> and userpassword = #{userpassword} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and portraiturl = #{portraiturl} </if>
+		  		  <if test="nickname != null and nickname != ''"> and nickname  like CONCAT('%', #{nickname, jdbcType=VARCHAR}, '%') </if>
+		  		  <if test="albumpicture != null and albumpicture != ''"> and albumpicture = #{albumpicture} </if>
+		  		  <if test="usersex != null and usersex != ''"> and usersex = #{usersex} </if>
+		  		  <if test="age != null and age != ''"> and age = #{age} </if>
+		  		  <if test="userbirthday != null and userbirthday != ''"> and userbirthday = #{userbirthday} </if>
+		  		  <if test="constellation != null and constellation != ''"> and constellation = #{constellation} </if>
+		  		  <if test="userloc != null and userloc != ''"> and userloc = #{userloc} </if>
+		  		  <if test="usersite != null and usersite != ''"> and usersite = #{usersite} </if>
+		  		  <if test="userheight != null and userheight != ''"> and userheight = #{userheight} </if>
+		  		  <if test="userweight != null and userweight != ''"> and userweight = #{userweight} </if>
+		  		  <if test="sanwei != null and sanwei != ''"> and sanwei = #{sanwei} </if>
+		  		  <if test="occupation != null and occupation != ''"> and occupation = #{occupation} </if>
+		  		  <if test="longitude != null and longitude != ''"> and longitude = #{longitude} </if>
+		  		  <if test="latitude != null and latitude != ''"> and latitude = #{latitude} </if>
+		  		  <if test="interest != null and interest != ''"> and interest = #{interest} </if>
+		  		  <if test="signature != null and signature != ''"> and signature = #{signature} </if>
+		  		  <if test="concerncount != null and concerncount != ''"> and concerncount = #{concerncount} </if>
+		  		  <if test="fans != null and fans != ''"> and fans = #{fans} </if>
+		  		  <if test="piccount != null and piccount != ''"> and piccount = #{piccount} </if>
+		  		  <if test="vediocount != null and vediocount != ''"> and vediocount = #{vediocount} </if>
+		  		  <if test="priceforchat != null and priceforchat != ''"> and priceforchat = #{priceforchat} </if>
+		  		  <if test="priceforvedio != null and priceforvedio != ''"> and priceforvedio = #{priceforvedio} </if>
+		  		  <if test="lookcount != null and lookcount != ''"> and lookcount = #{lookcount} </if>
+		  		  <if test="adminaffirm != null and adminaffirm != ''"> and adminaffirm = #{adminaffirm} </if>
+		  		  <if test="attestationpicture1 != null and attestationpicture1 != ''"> and attestationpicture1 = #{attestationpicture1} </if>
+		  		  <if test="attestationpicture2 != null and attestationpicture2 != ''"> and attestationpicture2 = #{attestationpicture2} </if>
+		  		  <if test="creditcard != null and creditcard != ''"> and creditcard = #{creditcard} </if>
+		  		  <if test="realname != null and realname != ''"> and realname = #{realname} </if>
+		  		  <if test="withdrawacount != null and withdrawacount != ''"> and withdrawacount = #{withdrawacount} </if>
+		  		  <if test="recharge != null and recharge != ''"> and recharge = #{recharge} </if>
+		  		  <if test="withdraw != null and withdraw != ''"> and withdraw = #{withdraw} </if>
+		  		  <if test="deviceid != null and deviceid != ''"> and deviceid = #{deviceid} </if>
+		  		  <if test="deleteflag != null and deleteflag != ''"> and deleteflag = #{deleteflag} </if>
+		  		  <if test="accesscode != null and accesscode != ''"> and accesscode = #{accesscode} </if>
+		  		  <if test="lastlogintime != null and lastlogintime != ''"> and lastlogintime = #{lastlogintime} </if>
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="updatetime != null and updatetime != ''"> and updatetime = #{updatetime} </if>
+		  		  <if test="rytoken != null and rytoken != ''"> and rytoken = #{rytoken} </if>
+		  		  <if test="reportedtime != null and reportedtime != ''"> and reportedtime = #{reportedtime} </if>
+		  		  <if test="vip != null and vip != ''"> and vip = #{vip} </if>
+		  		  <if test="viptype != null and viptype != ''"> and viptype = #{viptype} </if>
+		  		  <if test="paytosee != null and paytosee != ''"> and paytosee = #{paytosee} </if>
+		  		  <if test="qqopenid != null and qqopenid != ''"> and qqopenid = #{qqopenid} </if>
+		  		  <if test="weixinopenid != null and weixinopenid != ''"> and weixinopenid = #{weixinopenid} </if>
+		  		  <if test="weiboopenid != null and weiboopenid != ''"> and weiboopenid = #{weiboopenid} </if>
+		  		  <if test="online != null and online != ''"> and online = #{online} </if>
+		  		  <if test="lastonlinetime != null and lastonlinetime != ''"> and lastonlinetime = #{lastonlinetime} </if>
+		  		  <if test="lastofflinetime != null and lastofflinetime != ''"> and lastofflinetime = #{lastofflinetime} </if>
+		  		  <if test="onlinecount != null and onlinecount != ''"> and onlinecount = #{onlinecount} </if>
+		  		  <if test="feedback != null and feedback != ''"> and feedback = #{feedback} </if>
+		  		  <if test="evaluatecount != null and evaluatecount != ''"> and evaluatecount = #{evaluatecount} </if>
+		  		  <if test="whcooperation != null and whcooperation != ''"> and whcooperation = #{whcooperation} </if>
+		  		  <if test="whcompany != null and whcompany != ''"> and whcompany = #{whcompany} </if>
+		  		  <if test="unreadsysinfo != null and unreadsysinfo != ''"> and unreadsysinfo = #{unreadsysinfo} </if>
+		  		  <if test="unreadnewsinfo != null and unreadnewsinfo != ''"> and unreadnewsinfo = #{unreadnewsinfo} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by userid desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_user
+		 <where>  
+		  		  <if test="userid != null and userid != ''"> and userid = #{userid} </if>
+		  		  <if test="yyid != null and yyid != ''"> and yyid = #{yyid} </if>
+		  		  <if test="phonenumber != null and phonenumber != ''"> and phonenumber = #{phonenumber} </if>
+		  		  <if test="userpassword != null and userpassword != ''"> and userpassword = #{userpassword} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and portraiturl = #{portraiturl} </if>
+		  		  <if test="nickname != null and nickname != ''"> and nickname  like CONCAT('%', #{nickname, jdbcType=VARCHAR}, '%') </if>
+		  		  <if test="albumpicture != null and albumpicture != ''"> and albumpicture = #{albumpicture} </if>
+		  		  <if test="usersex != null and usersex != ''"> and usersex = #{usersex} </if>
+		  		  <if test="age != null and age != ''"> and age = #{age} </if>
+		  		  <if test="userbirthday != null and userbirthday != ''"> and userbirthday = #{userbirthday} </if>
+		  		  <if test="constellation != null and constellation != ''"> and constellation = #{constellation} </if>
+		  		  <if test="userloc != null and userloc != ''"> and userloc = #{userloc} </if>
+		  		  <if test="usersite != null and usersite != ''"> and usersite = #{usersite} </if>
+		  		  <if test="userheight != null and userheight != ''"> and userheight = #{userheight} </if>
+		  		  <if test="userweight != null and userweight != ''"> and userweight = #{userweight} </if>
+		  		  <if test="sanwei != null and sanwei != ''"> and sanwei = #{sanwei} </if>
+		  		  <if test="occupation != null and occupation != ''"> and occupation = #{occupation} </if>
+		  		  <if test="longitude != null and longitude != ''"> and longitude = #{longitude} </if>
+		  		  <if test="latitude != null and latitude != ''"> and latitude = #{latitude} </if>
+		  		  <if test="interest != null and interest != ''"> and interest = #{interest} </if>
+		  		  <if test="signature != null and signature != ''"> and signature = #{signature} </if>
+		  		  <if test="concerncount != null and concerncount != ''"> and concerncount = #{concerncount} </if>
+		  		  <if test="fans != null and fans != ''"> and fans = #{fans} </if>
+		  		  <if test="piccount != null and piccount != ''"> and piccount = #{piccount} </if>
+		  		  <if test="vediocount != null and vediocount != ''"> and vediocount = #{vediocount} </if>
+		  		  <if test="priceforchat != null and priceforchat != ''"> and priceforchat = #{priceforchat} </if>
+		  		  <if test="priceforvedio != null and priceforvedio != ''"> and priceforvedio = #{priceforvedio} </if>
+		  		  <if test="lookcount != null and lookcount != ''"> and lookcount = #{lookcount} </if>
+		  		  <if test="adminaffirm != null and adminaffirm != ''"> and adminaffirm = #{adminaffirm} </if>
+		  		  <if test="attestationpicture1 != null and attestationpicture1 != ''"> and attestationpicture1 = #{attestationpicture1} </if>
+		  		  <if test="attestationpicture2 != null and attestationpicture2 != ''"> and attestationpicture2 = #{attestationpicture2} </if>
+		  		  <if test="creditcard != null and creditcard != ''"> and creditcard = #{creditcard} </if>
+		  		  <if test="realname != null and realname != ''"> and realname = #{realname} </if>
+		  		  <if test="withdrawacount != null and withdrawacount != ''"> and withdrawacount = #{withdrawacount} </if>
+		  		  <if test="recharge != null and recharge != ''"> and recharge = #{recharge} </if>
+		  		  <if test="withdraw != null and withdraw != ''"> and withdraw = #{withdraw} </if>
+		  		  <if test="deviceid != null and deviceid != ''"> and deviceid = #{deviceid} </if>
+		  		  <if test="deleteflag != null and deleteflag != ''"> and deleteflag = #{deleteflag} </if>
+		  		  <if test="accesscode != null and accesscode != ''"> and accesscode = #{accesscode} </if>
+		  		  <if test="lastlogintime != null and lastlogintime != ''"> and lastlogintime = #{lastlogintime} </if>
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="updatetime != null and updatetime != ''"> and updatetime = #{updatetime} </if>
+		  		  <if test="rytoken != null and rytoken != ''"> and rytoken = #{rytoken} </if>
+		  		  <if test="reportedtime != null and reportedtime != ''"> and reportedtime = #{reportedtime} </if>
+		  		  <if test="vip != null and vip != ''"> and vip = #{vip} </if>
+		  		  <if test="viptype != null and viptype != ''"> and viptype = #{viptype} </if>
+		  		  <if test="paytosee != null and paytosee != ''"> and paytosee = #{paytosee} </if>
+		  		  <if test="qqopenid != null and qqopenid != ''"> and qqopenid = #{qqopenid} </if>
+		  		  <if test="weixinopenid != null and weixinopenid != ''"> and weixinopenid = #{weixinopenid} </if>
+		  		  <if test="weiboopenid != null and weiboopenid != ''"> and weiboopenid = #{weiboopenid} </if>
+		  		  <if test="online != null and online != ''"> and online = #{online} </if>
+		  		  <if test="lastonlinetime != null and lastonlinetime != ''"> and lastonlinetime = #{lastonlinetime} </if>
+		  		  <if test="lastofflinetime != null and lastofflinetime != ''"> and lastofflinetime = #{lastofflinetime} </if>
+		  		  <if test="onlinecount != null and onlinecount != ''"> and onlinecount = #{onlinecount} </if>
+		  		  <if test="feedback != null and feedback != ''"> and feedback = #{feedback} </if>
+		  		  <if test="evaluatecount != null and evaluatecount != ''"> and evaluatecount = #{evaluatecount} </if>
+		  		  <if test="whcooperation != null and whcooperation != ''"> and whcooperation = #{whcooperation} </if>
+		  		  <if test="whcompany != null and whcompany != ''"> and whcompany = #{whcompany} </if>
+		  		  <if test="unreadsysinfo != null and unreadsysinfo != ''"> and unreadsysinfo = #{unreadsysinfo} </if>
+		  		  <if test="unreadnewsinfo != null and unreadnewsinfo != ''"> and unreadnewsinfo = #{unreadnewsinfo} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.ywms.domain.YwmsUserDO" useGeneratedKeys="true" keyProperty="userid">
+		insert into ywms_user
+		(
+			`yyid`, 
+			`phonenumber`, 
+			`userpassword`, 
+			`portraiturl`, 
+			`nickname`, 
+			`albumpicture`, 
+			`usersex`, 
+			`age`, 
+			`userbirthday`, 
+			`constellation`, 
+			`userloc`, 
+			`usersite`, 
+			`userheight`, 
+			`userweight`, 
+			`sanwei`, 
+			`occupation`, 
+			`longitude`, 
+			`latitude`, 
+			`interest`, 
+			`signature`, 
+			`concerncount`, 
+			`fans`, 
+			`piccount`, 
+			`vediocount`, 
+			`priceforchat`, 
+			`priceforvedio`, 
+			`lookcount`, 
+			`adminaffirm`, 
+			`attestationpicture1`, 
+			`attestationpicture2`, 
+			`creditcard`, 
+			`realname`, 
+			`withdrawacount`, 
+			`recharge`, 
+			`withdraw`, 
+			`deviceid`, 
+			`deleteflag`, 
+			`accesscode`, 
+			`lastlogintime`, 
+			`createtime`, 
+			`updatetime`, 
+			`rytoken`, 
+			`reportedtime`, 
+			`vip`, 
+			`viptype`, 
+			`paytosee`, 
+			`qqopenid`, 
+			`weixinopenid`, 
+			`weiboopenid`, 
+			`online`, 
+			`lastonlinetime`, 
+			`lastofflinetime`, 
+			`onlinecount`, 
+			`feedback`, 
+			`evaluatecount`, 
+			`whcooperation`, 
+			`whcompany`, 
+			`unreadsysinfo`, 
+			`unreadnewsinfo`
+		)
+		values
+		(
+			#{yyid}, 
+			#{phonenumber}, 
+			#{userpassword}, 
+			#{portraiturl}, 
+			#{nickname}, 
+			#{albumpicture}, 
+			#{usersex}, 
+			#{age}, 
+			#{userbirthday}, 
+			#{constellation}, 
+			#{userloc}, 
+			#{usersite}, 
+			#{userheight}, 
+			#{userweight}, 
+			#{sanwei}, 
+			#{occupation}, 
+			#{longitude}, 
+			#{latitude}, 
+			#{interest}, 
+			#{signature}, 
+			#{concerncount}, 
+			#{fans}, 
+			#{piccount}, 
+			#{vediocount}, 
+			#{priceforchat}, 
+			#{priceforvedio}, 
+			#{lookcount}, 
+			#{adminaffirm}, 
+			#{attestationpicture1}, 
+			#{attestationpicture2}, 
+			#{creditcard}, 
+			#{realname}, 
+			#{withdrawacount}, 
+			#{recharge}, 
+			#{withdraw}, 
+			#{deviceid}, 
+			#{deleteflag}, 
+			#{accesscode}, 
+			#{lastlogintime}, 
+			#{createtime}, 
+			#{updatetime}, 
+			#{rytoken}, 
+			#{reportedtime}, 
+			#{vip}, 
+			#{viptype}, 
+			#{paytosee}, 
+			#{qqopenid}, 
+			#{weixinopenid}, 
+			#{weiboopenid}, 
+			#{online}, 
+			#{lastonlinetime}, 
+			#{lastofflinetime}, 
+			#{onlinecount}, 
+			#{feedback}, 
+			#{evaluatecount}, 
+			#{whcooperation}, 
+			#{whcompany}, 
+			#{unreadsysinfo}, 
+			#{unreadnewsinfo}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.ywms.domain.YwmsUserDO">
+		update ywms_user 
+		<set>
+			<if test="yyid != null">`yyid` = #{yyid}, </if>
+			<if test="phonenumber != null">`phonenumber` = #{phonenumber}, </if>
+			<if test="userpassword != null">`userpassword` = #{userpassword}, </if>
+			<if test="portraiturl != null">`portraiturl` = #{portraiturl}, </if>
+			<if test="nickname != null">`nickname`  = #{nickname}, </if>
+			<if test="albumpicture != null">`albumpicture` = #{albumpicture}, </if>
+			<if test="usersex != null">`usersex` = #{usersex}, </if>
+			<if test="age != null">`age` = #{age}, </if>
+			<if test="userbirthday != null">`userbirthday` = #{userbirthday}, </if>
+			<if test="constellation != null">`constellation` = #{constellation}, </if>
+			<if test="userloc != null">`userloc` = #{userloc}, </if>
+			<if test="usersite != null">`usersite` = #{usersite}, </if>
+			<if test="userheight != null">`userheight` = #{userheight}, </if>
+			<if test="userweight != null">`userweight` = #{userweight}, </if>
+			<if test="sanwei != null">`sanwei` = #{sanwei}, </if>
+			<if test="occupation != null">`occupation` = #{occupation}, </if>
+			<if test="longitude != null">`longitude` = #{longitude}, </if>
+			<if test="latitude != null">`latitude` = #{latitude}, </if>
+			<if test="interest != null">`interest` = #{interest}, </if>
+			<if test="signature != null">`signature` = #{signature}, </if>
+			<if test="concerncount != null">`concerncount` = #{concerncount}, </if>
+			<if test="fans != null">`fans` = #{fans}, </if>
+			<if test="piccount != null">`piccount` = #{piccount}, </if>
+			<if test="vediocount != null">`vediocount` = #{vediocount}, </if>
+			<if test="priceforchat != null">`priceforchat` = #{priceforchat}, </if>
+			<if test="priceforvedio != null">`priceforvedio` = #{priceforvedio}, </if>
+			<if test="lookcount != null">`lookcount` = #{lookcount}, </if>
+			<if test="adminaffirm != null">`adminaffirm` = #{adminaffirm}, </if>
+			<if test="attestationpicture1 != null">`attestationpicture1` = #{attestationpicture1}, </if>
+			<if test="attestationpicture2 != null">`attestationpicture2` = #{attestationpicture2}, </if>
+			<if test="creditcard != null">`creditcard` = #{creditcard}, </if>
+			<if test="realname != null">`realname` = #{realname}, </if>
+			<if test="withdrawacount != null">`withdrawacount` = #{withdrawacount}, </if>
+			<if test="recharge != null">`recharge` = #{recharge}, </if>
+			<if test="withdraw != null">`withdraw` = #{withdraw}, </if>
+			<if test="deviceid != null">`deviceid` = #{deviceid}, </if>
+			<if test="deleteflag != null">`deleteflag` = #{deleteflag}, </if>
+			<if test="accesscode != null">`accesscode` = #{accesscode}, </if>
+			<if test="lastlogintime != null">`lastlogintime` = #{lastlogintime}, </if>
+			<if test="createtime != null">`createtime` = #{createtime}, </if>
+			<if test="updatetime != null">`updatetime` = #{updatetime}, </if>
+			<if test="rytoken != null">`rytoken` = #{rytoken}, </if>
+			<if test="reportedtime != null">`reportedtime` = #{reportedtime}, </if>
+			<if test="vip != null">`vip` = #{vip}, </if>
+			<if test="viptype != null">`viptype` = #{viptype}, </if>
+			<if test="paytosee != null">`paytosee` = #{paytosee}, </if>
+			<if test="qqopenid != null">`qqopenid` = #{qqopenid}, </if>
+			<if test="weixinopenid != null">`weixinopenid` = #{weixinopenid}, </if>
+			<if test="weiboopenid != null">`weiboopenid` = #{weiboopenid}, </if>
+			<if test="online != null">`online` = #{online}, </if>
+			<if test="lastonlinetime != null">`lastonlinetime` = #{lastonlinetime}, </if>
+			<if test="lastofflinetime != null">`lastofflinetime` = #{lastofflinetime}, </if>
+			<if test="onlinecount != null">`onlinecount` = #{onlinecount}, </if>
+			<if test="feedback != null">`feedback` = #{feedback}, </if>
+			<if test="evaluatecount != null">`evaluatecount` = #{evaluatecount}, </if>
+			<if test="whcooperation != null">`whcooperation` = #{whcooperation}, </if>
+			<if test="whcompany != null">`whcompany` = #{whcompany}, </if>
+			<if test="unreadsysinfo != null">`unreadsysinfo` = #{unreadsysinfo}, </if>
+			<if test="unreadnewsinfo != null">`unreadnewsinfo` = #{unreadnewsinfo}</if>
+		</set>
+		where userid = #{userid}
+	</update>
+
+
+	<update id="updaterecharge" parameterType="com.bootdo.ywms.domain.YwmsUserDO">
+		update ywms_user
+		<set>
+			<if test="recharge != null">`recharge` = #{recharge}, </if>
+		</set>
+		where userid = #{userid}
+	</update>
+
+
+
+	<delete id="remove">
+		delete from ywms_user where userid = #{value}
+	</delete>
+
+	<update id="editfreeze" parameterType="com.bootdo.ywms.domain.YwmsUserDO">
+		update ywms_user
+		<set>
+			`deleteflag` = #{deleteflag}
+		</set>
+		where userid = #{userid}
+	</update>
+
+
+	<delete id="batchRemove">
+		delete from ywms_user where userid in 
+		<foreach item="userid" collection="array" open="(" separator="," close=")">
+			#{userid}
+		</foreach>
+	</delete>
+
+
+	<select id="allwh"  resultType="String">
+		SELECT 	GROUP_CONCAT(userid) as userids FROM  `ywms_user`  WHERE  whcooperation=1
+	</select>
+</mapper>

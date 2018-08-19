@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+
+						<table border="1" cellspacing="1" cellpadding="0"  class="content" width="100%">
+							<tr >
+								<td width="5%" style="width:160px;height:160px;" align="right" rowspan="4"><img width="160px;" height="160px;"  th:src="@{${ywmsUser.portraiturl}}" alt="二维码" /></td>
+								<input type="hidden" id="userid"   th:value="${ywmsUser.userid}">
+								<td >眼缘ID: <span th:text="${ywmsUser.yyid}"/></td>
+								<td>用户昵称：<span th:text="${ywmsUser.nickname}"/></td>
+								<td>手机号码：<span th:text="${ywmsUser.phonenumber}"/></td>
+
+								<td >生日：<span th:text="${bir}"/></td>
+								<!--<td >生日：<span th:text="${#dates.format(ywmsUser.userbirthday, 'yyyy-MM-dd')}"/></td>-->
+								<td >帐号状态：<span th:text="${ywmsUser.deleteflag} eq 1 ? '正常' : '停用'"/> </td>
+							</tr>
+							<tr >
+								<td width ="15%">性别：<span th:text="${ywmsUser.usersex} eq 0 ? '女' : '男'"/></td>
+								<td colspan="2">地理位置：<span th:text="${ywmsUser.userloc}"/></td>
+								<td colspan="2">注册时间：<span th:text="${ywmsUser.createtime}"/> &nbsp;&nbsp;最后更新时间：<span th:text="${ywmsUser.updatetime}"/></td>
+
+							</tr>
+							<tr >
+								<td colspan="2">个性签名：<span th:text="${ywmsUser.signature}"/></td>
+								<td colspan="3">兴趣爱好：<span th:text="${ywmsUser.interest}"/></td>
+							</tr>
+							<tr >
+
+								<td >绑定QQ：<span th:text="${ywmsUser.qqopenid}"/></td>
+
+								<td>绑定微信：<span th:text="${ywmsUser.weixinopenid}"/></td>
+								<td colspan="3">绑定新浪微博：<span th:text="${ywmsUser.weiboopenid}"/></td>
+							</tr>
+							<tr >
+
+								<td>身高：<span th:text="${ywmsUser.userheight}"/></td>
+								<td>体重：<span th:text="${ywmsUser.userweight}"/></td>
+								<td>三围：<span th:text="${ywmsUser.sanwei}"/></td>
+								<td>年龄：<span th:text="${ywmsUser.age}"/></td>
+								<td>认证：<span th:text="${ywmsUser.userweight}"/> </td>
+								<td >职业：<span th:text="${ywmsUser.occupation}"/></td>
+							</tr>
+							<tr >
+
+								<td colspan="2">最近一次上线时间：<span th:text="${ywmsUser.lastonlinetime}"/></td>
+								<td colspan="2">最近一次下线时间：<span th:text="${ywmsUser.lastofflinetime}"/></td>
+
+								<td>认证：<span th:text="${ywmsUser.adminaffirm} eq 1 ? '已认证' : '未认证'"/></td>
+								<td colspan="1">设备号：<span th:text="${ywmsUser.deviceid}"/></td>
+							</tr>
+
+							<tr>
+								<td colspan="6"  style="background:#f3f3f3">资产信息</td>
+							</tr>
+							<tr>
+								<td colspan="2">姓名(提款姓名)：<span th:text="${ywmsUser.realname}"/></td>
+
+								<td>缘豆(充值)：
+									<a href="#"  mce_href="#" title="查看缘豆流水记录" onclick="lookrecharge()" ><span th:text="${ywmsUser.recharge}"/> </a>
+
+
+								</td>
+
+
+								<td>缘币(提现)：<a href="#"  mce_href="#" title="查看缘币流水记录" onclick="lookwithdraw()"
+											 ><span th:text="${ywmsUser.withdraw}"/> </a>
+								</td>
+								<td colspan="2" >提款账户：<span th:text="${ywmsUser.withdrawacount}"/></td>
+							</tr>
+
+							<tr>
+								<td colspan="6"  style="background:#f3f3f3">内容情况</td>
+							</tr>
+
+							<tr>
+								<td>是否在线：<span th:text="${ywmsUser.online} eq 1 ? '在线' : '不在线'"/></td>
+
+								<td>图片数量：<span th:text="${ywmsUser.piccount}"/></td>
+								<td>视频数量：<span th:text="${ywmsUser.vediocount}"/></td>
+								<td>聊天价格：<span th:text="${ywmsUser.priceforchat}"/></td>
+								<td  colspan="2" >在线视频价格：<span th:text="${ywmsUser.priceforvedio}"/></td>
+
+							</tr>
+							<tr>
+								<td>关注数：<span th:text="${ywmsUser.concerncount}"/></td>
+								<td>粉丝：<span th:text="${ywmsUser.fans}"/></td>
+								<td>在线总时间：<span th:text="${ywmsUser.onlinecount}"/></td>
+								<td>好评率：<span th:text="${ywmsUser.feedback}"/></td>
+								<td>评价条数：<span th:text="${ywmsUser.evaluatecount}"/></td>
+							</tr>
+
+
+							<tr>
+								<td colspan="6"  style="background:#f3f3f3">用户角色</td>
+							</tr>
+							<tr>
+								<td colspan="3">图片认证：<span th:text="${ywmsUser.attestationpicture1}"/></td>
+								<td colspan="3">视频认证：<span th:text="${ywmsUser.attestationpicture2}"/></td>
+							</tr>
+
+							<tr>
+								<td colspan="6"  style="background:#f3f3f3"><font color="red">违规处理</font></td>
+							</tr>
+							<tr>
+								<td colspan="6">被举报次数：<span th:text="${ywmsUser.reportedtime}"/></td>
+							</tr>
+
+
+
+						</table>
+
+
+
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsUser/look.js">
+	</script>
+</body>
+</html>

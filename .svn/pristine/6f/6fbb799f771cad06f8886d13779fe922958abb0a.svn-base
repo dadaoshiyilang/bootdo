@@ -1,0 +1,142 @@
+package com.bootdo.banner.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.File;
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import com.bootdo.banner.dao.AdvertisePictureDao;
+import com.bootdo.banner.domain.AdvertisePictureDO;
+import com.bootdo.banner.service.AdvertisePictureService;
+import com.bootdo.common.utils.OSSClientUtil;
+import com.bootdo.system.domain.UserDO;
+import com.bootdo.system.service.UserService;
+
+import cn.jiguang.common.utils.StringUtils;
+
+
+
+@Service
+public class AdvertisePictureServiceImpl implements AdvertisePictureService {
+	@Autowired
+	private AdvertisePictureDao advertisePictureDao;
+	
+	@Autowired
+	private OSSClientUtil ossClient;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Override
+	public AdvertisePictureDO get(Integer id){
+		return advertisePictureDao.get(id);
+	}
+	
+	@Override
+	public List<AdvertisePictureDO> list(Map<String, Object> map){
+		return advertisePictureDao.list(map);
+	}
+	
+	@Override
+	public int count(Map<String, Object> map){
+		return advertisePictureDao.count(map);
+	}
+	
+	@Override
+	public boolean save(AdvertisePictureDO advertisePicture, MultipartFile fileField, Long userId){
+		try {
+			String picDepositUrl = ossClient.uploadImg2Oss(fileField,"bannerImage");// 上传图片到阿里云
+			if (StringUtils.isNotEmpty(picDepositUrl)) {
+				advertisePicture.setPicDepositUrl("bannerImage/"+picDepositUrl);
+				Date endDate = advertisePicture.getEndtime();// 结束日期
+				Calendar endDatecal = Calendar.getInstance();
+				endDatecal.setTime(endDate);
+				endDatecal.add(Calendar.HOUR, 23);
+				endDatecal.add(Calendar.MINUTE, 59);
+				endDatecal.add(Calendar.SECOND, 59);
+				advertisePicture.setEndtime(endDatecal.getTime());// 结束时间
+				advertisePicture.setCreateTime(new Date());// 创建时间
+				advertisePicture.setUpdateTime(new Date());// 修改时间
+				UserDO userDO  = userService.get(userId);
+				advertisePicture.setCreateUser(userDO.getName());// 创建者
+				advertisePicture.setUpdateUser(userDO.getName());// 修改者
+				advertisePicture.setSalestatus("0");
+				advertisePicture.setStatus("1");
+				advertisePicture.setBanner("1");
+				int flag = advertisePictureDao.save(advertisePicture);
+				if (flag > 0) {
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	@Override
+	public int update(AdvertisePictureDO advertisePicture, Long userId){
+		Date endDate = advertisePicture.getEndtime();// 结束日期
+		Calendar endDatecal = Calendar.getInstance();
+		endDatecal.setTime(endDate);
+		endDatecal.add(Calendar.HOUR, 23);
+		endDatecal.add(Calendar.MINUTE, 59);
+		endDatecal.add(Calendar.SECOND, 59);
+		advertisePicture.setEndtime(endDatecal.getTime());// 结束时间
+		advertisePicture.setUpdateTime(new Date());// 修改时间
+		UserDO userDO = userService.get(userId);
+		advertisePicture.setUpdateUser(userDO.getName());// 修改者
+		return advertisePictureDao.update(advertisePicture);
+	}
+	
+	@Override
+	public int remove(Integer id){
+		return advertisePictureDao.remove(id);
+	}
+	
+	@Override
+	public int batchRemove(Integer[] ids){
+		return advertisePictureDao.batchRemove(ids);
+	}
+	
+	@Override
+	public int batchOnline(Integer[] ids, String status){
+		return advertisePictureDao.batchOnline(ids, status);
+	}
+	
+	/**
+	 * 保存上传图片信息
+	 * @param inDto 
+	 * @param file 
+	 * @param fileExt 文件扩展名
+	 * @throws IOException 
+	 * @throws IllegalStateException 
+	 */
+	public String insertCarousePic(MultipartFile file, String fileExt) throws IllegalStateException, IOException {
+		String fileDir = "";
+		// 文件名
+		String fileName = file.getOriginalFilename();
+		// 获取存放图片地址
+		String fileurl = "";
+		// 获取上传文件路径(将随机UID和时间戳加密)
+		String filePath = System.currentTimeMillis() + "." + fileExt;
+		File acFile=new File(fileurl);
+	    if(!acFile.exists() && !acFile.isDirectory()){
+	    	//如果该文件夹不存在  ,创建该文件夹  
+	    	acFile.mkdir(); 
+	    } 
+	    fileDir = fileurl +"/"+ filePath;
+		File img = new File(fileDir);
+		file.transferTo(img);
+		//删除活动原图片
+		File delFile = new File(fileurl +"/"+fileName);
+		if(delFile.exists()){
+			delFile.delete();
+		}
+		return filePath;
+	}
+}

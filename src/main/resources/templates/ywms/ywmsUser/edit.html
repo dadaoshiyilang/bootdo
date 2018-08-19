@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="userid" name="userid" th:value="${ywmsUser.userid}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">眼缘ID：</label>
+								<div class="col-sm-8">
+									<input id="yyid" name="yyid" th:value="${ywmsUser.yyid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户手机号，也是登陆名：</label>
+								<div class="col-sm-8">
+									<input id="phonenumber" name="phonenumber" th:value="${ywmsUser.phonenumber}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户密码：</label>
+								<div class="col-sm-8">
+									<input id="userpassword" name="userpassword" th:value="${ywmsUser.userpassword}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">头像地址：</label>
+								<div class="col-sm-8">
+									<input id="portraiturl" name="portraiturl" th:value="${ywmsUser.portraiturl}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户昵称：</label>
+								<div class="col-sm-8">
+									<input id="nickname" name="nickname" th:value="${ywmsUser.nickname}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">空间背景图片：</label>
+								<div class="col-sm-8">
+									<input id="albumpicture" name="albumpicture" th:value="${ywmsUser.albumpicture}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">性别 0女 1男：</label>
+								<div class="col-sm-8">
+									<input id="usersex" name="usersex" th:value="${ywmsUser.usersex}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">年龄：</label>
+								<div class="col-sm-8">
+									<input id="age" name="age" th:value="${ywmsUser.age}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户生日：</label>
+								<div class="col-sm-8">
+									<input id="userbirthday" name="userbirthday" th:value="${ywmsUser.userbirthday}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户星座：</label>
+								<div class="col-sm-8">
+									<input id="constellation" name="constellation" th:value="${ywmsUser.constellation}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户的定位地址：</label>
+								<div class="col-sm-8">
+									<input id="userloc" name="userloc" th:value="${ywmsUser.userloc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户所在的省市：</label>
+								<div class="col-sm-8">
+									<input id="usersite" name="usersite" th:value="${ywmsUser.usersite}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">身高：</label>
+								<div class="col-sm-8">
+									<input id="userheight" name="userheight" th:value="${ywmsUser.userheight}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">体重：</label>
+								<div class="col-sm-8">
+									<input id="userweight" name="userweight" th:value="${ywmsUser.userweight}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">三围：</label>
+								<div class="col-sm-8">
+									<input id="sanwei" name="sanwei" th:value="${ywmsUser.sanwei}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">职业：</label>
+								<div class="col-sm-8">
+									<input id="occupation" name="occupation" th:value="${ywmsUser.occupation}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户经度：</label>
+								<div class="col-sm-8">
+									<input id="longitude" name="longitude" th:value="${ywmsUser.longitude}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户纬度：</label>
+								<div class="col-sm-8">
+									<input id="latitude" name="latitude" th:value="${ywmsUser.latitude}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">兴趣爱好：</label>
+								<div class="col-sm-8">
+									<input id="interest" name="interest" th:value="${ywmsUser.interest}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">签名：</label>
+								<div class="col-sm-8">
+									<input id="signature" name="signature" th:value="${ywmsUser.signature}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">关注数：</label>
+								<div class="col-sm-8">
+									<input id="concerncount" name="concerncount" th:value="${ywmsUser.concerncount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">粉丝：</label>
+								<div class="col-sm-8">
+									<input id="fans" name="fans" th:value="${ywmsUser.fans}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">图片数量：</label>
+								<div class="col-sm-8">
+									<input id="piccount" name="piccount" th:value="${ywmsUser.piccount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">视频数量：</label>
+								<div class="col-sm-8">
+									<input id="vediocount" name="vediocount" th:value="${ywmsUser.vediocount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">聊天价格：</label>
+								<div class="col-sm-8">
+									<input id="priceforchat" name="priceforchat" th:value="${ywmsUser.priceforchat}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">在线视频价格：</label>
+								<div class="col-sm-8">
+									<input id="priceforvedio" name="priceforvedio" th:value="${ywmsUser.priceforvedio}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">浏览次数：</label>
+								<div class="col-sm-8">
+									<input id="lookcount" name="lookcount" th:value="${ywmsUser.lookcount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否认证，0未认证 1已认证 2审核中 3合作网红：</label>
+								<div class="col-sm-8">
+									<input id="adminaffirm" name="adminaffirm" th:value="${ywmsUser.adminaffirm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">认证图片1：</label>
+								<div class="col-sm-8">
+									<input id="attestationpicture1" name="attestationpicture1" th:value="${ywmsUser.attestationpicture1}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">认证图片2：</label>
+								<div class="col-sm-8">
+									<input id="attestationpicture2" name="attestationpicture2" th:value="${ywmsUser.attestationpicture2}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">身份证：</label>
+								<div class="col-sm-8">
+									<input id="creditcard" name="creditcard" th:value="${ywmsUser.creditcard}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">姓名(提款姓名)：</label>
+								<div class="col-sm-8">
+									<input id="realname" name="realname" th:value="${ywmsUser.realname}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">提款账户：</label>
+								<div class="col-sm-8">
+									<input id="withdrawacount" name="withdrawacount" th:value="${ywmsUser.withdrawacount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">缘豆(充值)：</label>
+								<div class="col-sm-8">
+									<input id="recharge" name="recharge" th:value="${ywmsUser.recharge}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">缘币(提现)：</label>
+								<div class="col-sm-8">
+									<input id="withdraw" name="withdraw" th:value="${ywmsUser.withdraw}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">设备号：</label>
+								<div class="col-sm-8">
+									<input id="deviceid" name="deviceid" th:value="${ywmsUser.deviceid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">用户的状态（1为可用0为不可用）：</label>
+								<div class="col-sm-8">
+									<input id="deleteflag" name="deleteflag" th:value="${ywmsUser.deleteflag}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">授权码：</label>
+								<div class="col-sm-8">
+									<input id="accesscode" name="accesscode" th:value="${ywmsUser.accesscode}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最后一次登陆时间：</label>
+								<div class="col-sm-8">
+									<input id="lastlogintime" name="lastlogintime" th:value="${ywmsUser.lastlogintime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建时间：</label>
+								<div class="col-sm-8">
+									<input id="createtime" name="createtime" th:value="${ywmsUser.createtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">更新时间：</label>
+								<div class="col-sm-8">
+									<input id="updatetime" name="updatetime" th:value="${ywmsUser.updatetime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">融云及时聊天的token：</label>
+								<div class="col-sm-8">
+									<input id="rytoken" name="rytoken" th:value="${ywmsUser.rytoken}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">被举报次数：</label>
+								<div class="col-sm-8">
+									<input id="reportedtime" name="reportedtime" th:value="${ywmsUser.reportedtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">0.非会员1.会员：</label>
+								<div class="col-sm-8">
+									<input id="vip" name="vip" th:value="${ywmsUser.vip}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">1.月会员2.季会员3.半年会员4.年会员：</label>
+								<div class="col-sm-8">
+									<input id="viptype" name="viptype" th:value="${ywmsUser.viptype}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">0.否1.是(需付费才可以查看的用户(入驻版的兼职以及以后的主播))：</label>
+								<div class="col-sm-8">
+									<input id="paytosee" name="paytosee" th:value="${ywmsUser.paytosee}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">qq登陆id：</label>
+								<div class="col-sm-8">
+									<input id="qqopenid" name="qqopenid" th:value="${ywmsUser.qqopenid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">微信登陆id：</label>
+								<div class="col-sm-8">
+									<input id="weixinopenid" name="weixinopenid" th:value="${ywmsUser.weixinopenid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">微博的openid：</label>
+								<div class="col-sm-8">
+									<input id="weiboopenid" name="weiboopenid" th:value="${ywmsUser.weiboopenid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">0.不在线,1.在线：</label>
+								<div class="col-sm-8">
+									<input id="online" name="online" th:value="${ywmsUser.online}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最近一次上线时间：</label>
+								<div class="col-sm-8">
+									<input id="lastonlinetime" name="lastonlinetime" th:value="${ywmsUser.lastonlinetime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最近一次下线时间：</label>
+								<div class="col-sm-8">
+									<input id="lastofflinetime" name="lastofflinetime" th:value="${ywmsUser.lastofflinetime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">在线总时间：</label>
+								<div class="col-sm-8">
+									<input id="onlinecount" name="onlinecount" th:value="${ywmsUser.onlinecount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">好评率：</label>
+								<div class="col-sm-8">
+									<input id="feedback" name="feedback" th:value="${ywmsUser.feedback}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">评价条数：</label>
+								<div class="col-sm-8">
+									<input id="evaluatecount" name="evaluatecount" th:value="${ywmsUser.evaluatecount}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">合作网红(0.否,1.是)：</label>
+								<div class="col-sm-8">
+									<input id="whcooperation" name="whcooperation" th:value="${ywmsUser.whcooperation}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">合作网红公司的名称：</label>
+								<div class="col-sm-8">
+									<input id="whcompany" name="whcompany" th:value="${ywmsUser.whcompany}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">未读系统消息条数：</label>
+								<div class="col-sm-8">
+									<input id="unreadsysinfo" name="unreadsysinfo" th:value="${ywmsUser.unreadsysinfo}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">未读动态消息条数：</label>
+								<div class="col-sm-8">
+									<input id="unreadnewsinfo" name="unreadnewsinfo" th:value="${ywmsUser.unreadnewsinfo}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsUser/edit.js">
+	</script>
+</body>
+</html>

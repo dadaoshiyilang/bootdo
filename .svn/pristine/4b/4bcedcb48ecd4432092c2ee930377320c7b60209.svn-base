@@ -1,0 +1,130 @@
+
+var prefix = "/ywms/ywmsUser"
+$(function() {
+	load();
+
+});
+
+function load() {
+
+
+
+	$('#exampleTable')
+			.bootstrapTable(
+					{
+						method : 'get', // 服务器数据的请求方式 get or post
+						url : prefix + "/list2", // 服务器数据的加载地址
+						//	showRefresh : true,
+						//	showToggle : true,
+						//	showColumns : true,
+						iconSize : 'outline',
+						cache: false,
+						toolbar : '#exampleToolbar',
+						striped : true, // 设置为true会有隔行变色效果
+						dataType : "json", // 服务器返回的数据类型
+						pagination : true, // 设置为true会在底部显示分页条
+						// queryParamsType : "limit",
+						// //设置为limit则会发送符合RESTFull格式的参数
+						singleSelect : false, // 设置为true将禁止多选
+						// contentType : "application/x-www-form-urlencoded",
+						// //发送到服务器的数据编码类型
+						pageSize : 10, // 如果设置了分页，每页数据条数
+						pageNumber : 1, // 如果设置了分布，首页页码
+						//search : true, // 是否显示搜索框
+						showColumns : false, // 是否显示内容下拉框（选择显示的列）
+						sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+						queryParams : function(params) {
+							return {
+								//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
+								limit: params.limit,
+								offset:params.offset,
+								id:$('#bbb').val(),
+							};
+						},
+						// //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
+						// queryParamsType = 'limit' ,返回参数必须包含
+						// limit, offset, search, sort, order 否则, 需要包含:
+						// pageSize, pageNumber, searchText, sortName,
+						// sortOrder.
+						// 返回false将会终止请求
+						columns : [
+							{
+								checkbox : true
+							},
+
+							{
+								field : 'id',
+								title : '流水id'
+							},
+							{
+								field : 'type',
+								title : '流水渠道',
+								formatter: function (value, row, index){ // 单元格格式化函数
+									var text = '';
+									if (value == 2) {
+										text = "获得礼物收益";
+									} else if (value == 3) {
+										if (row.expensetype == 0) {
+											text = "缘币提现中";
+										}else if (row.expensetype == 1) {
+											text = "缘币提现成功";
+										}else if (row.expensetype == 2) {
+											text = "缘币提现失败";
+										}
+									} else if (value == 1) {
+										if (row.expensetype == 1) {
+											text = "卖出相册收益";
+										} else if (row.expensetype == 2) {
+											text = " 卖出视频收益";
+										} else if (row.expensetype == 3) {
+
+											text = "语音聊天收益";
+										} else if (row.expensetype == 4) {
+
+											text = "视频聊天收益";
+										} else if (row.expensetype == 5) {
+
+											text = "礼物收益";
+										}
+
+									}
+									return text;
+								}
+							},
+
+							{
+								field : 'num',
+								title : '流水金额',
+								formatter: function (value, row, index){ // 单元格格式化函数
+									var text = '';
+									if (row.type == 2) {
+										text = "+"+value;
+									} else if (row.type == 3) {
+										if (row.expensetype == 0) {
+											text = "-"+value;
+										}else if (row.expensetype == 1) {
+											text = "-"+value;
+										}else if (row.expensetype == 2) {
+											text = "+"+value;
+										}
+									} else if (row.type == 1) {
+										if (row.expensetype !=6) {
+											text = "+"+value;
+										}
+
+									}
+									return text;
+								}
+							},
+
+							{
+								field : 'createtime',
+								title : '操作时间'
+							},
+						 ]
+					});
+}
+function reLoad() {
+	$('#exampleTable').bootstrapTable('refresh');
+}
+

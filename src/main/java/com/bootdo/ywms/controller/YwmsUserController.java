@@ -1,0 +1,236 @@
+package com.bootdo.ywms.controller;
+
+import com.bootdo.common.utils.PageUtils;
+import com.bootdo.common.utils.Query;
+import com.bootdo.common.utils.R;
+import com.bootdo.ywms.domain.YwmsUserDO;
+import com.bootdo.ywms.domain.YwmsYbDO;
+import com.bootdo.ywms.service.YwmsUserService;
+import com.bootdo.ywms.service.YwmsYbService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Map;
+
+/**
+ *
+ *
+ * @author fff
+ * @email 1992lcg@163.com
+ * @date 2018-07-05 15:03:23
+ */
+
+@Controller
+@RequestMapping("/ywms/ywmsUser")
+public class YwmsUserController {
+	@Autowired
+	private YwmsUserService ywmsUserService;
+
+	@Autowired
+	private YwmsYbService ywmsYbService;
+	@GetMapping()
+	@RequiresPermissions("ywms:ywmsUser:ywmsUser")
+	String YwmsUser(){return "ywms/ywmsUser/ywmsUser";
+	}
+
+	@ResponseBody
+	@GetMapping("/list")
+	@RequiresPermissions("ywms:ywmsUser:ywmsUser")
+	public PageUtils list(@RequestParam Map<String, Object> params){
+		//查询列表数据
+		Query query = new Query(params);
+		List<YwmsUserDO> ywmsUserList = ywmsUserService.list(query);
+		int total = ywmsUserService.count(query);
+		PageUtils pageUtils = new PageUtils(ywmsUserList, total);
+		return pageUtils;
+	}
+
+	@GetMapping("/lookrecharge/{userid}")
+	String YwmsUser1(@PathVariable("userid") Integer userid,Model model){
+		System.out.println("-----------------------:"+userid);
+		model.addAttribute("userid", userid);
+
+		return "ywms/ywmsUser/lookrecharge";
+	}
+
+	@GetMapping("/lookwithdraw/{userid}")
+	String YwmsUser2(@PathVariable("userid") Integer userid,Model model){
+		System.out.println("-----------------------:"+userid);
+		model.addAttribute("userid", userid);
+
+		return "ywms/ywmsUser/lookwithdraw";
+	}
+
+
+
+	//查看用户缘豆详情
+	@ResponseBody
+	@GetMapping("/list1")
+	 PageUtils lookrecharge(@RequestParam Map<String, Object> params){
+		System.out.println("-----------------------:");
+		Query query = new Query(params);
+		List<YwmsYbDO> list =  ywmsYbService.list(query);
+		int total = list.size();
+		PageUtils pageUtils = new PageUtils(list, total);
+		return pageUtils;
+
+	}
+
+	//查看用户缘币详情
+	@ResponseBody
+	@GetMapping("/list2")
+	PageUtils lookwithdraw(@RequestParam Map<String, Object> params){
+		System.out.println("-----------------------:");
+		Query query = new Query(params);
+		List<YwmsYbDO> list =  ywmsYbService.list2(query);
+		int total = list.size();
+		PageUtils pageUtils = new PageUtils(list, total);
+		return pageUtils;
+
+	}
+
+
+
+	@GetMapping("/add")
+	@RequiresPermissions("ywms:ywmsUser:add")
+	String add(){
+		return "ywms/ywmsUser/add";
+	}
+
+	@GetMapping("/edit/{userid}")
+	@RequiresPermissions("ywms:ywmsUser:edit")
+	String edit(@PathVariable("userid") Integer userid,Model model){
+		YwmsUserDO ywmsUser = ywmsUserService.get(userid);
+		model.addAttribute("ywmsUser", ywmsUser);
+		return "ywms/ywmsUser/edit";
+	}
+
+	//修改缘豆数
+	@GetMapping("/updaterecharge/{userid}")
+	@RequiresPermissions("ywms:ywmsUser:updaterecharge")
+	String updaterecharge(@PathVariable("userid") Integer userid,Model model){
+		YwmsUserDO ywmsUser = ywmsUserService.get(userid);
+		model.addAttribute("ywmsUser", ywmsUser);
+		return "ywms/ywmsUser/updaterecharge";
+	}
+
+	//查看用户详情
+	@GetMapping("/look/{userid}")
+	@RequiresPermissions("ywms:ywmsUser:look")
+	String look(@PathVariable("userid") Integer userid,Model model){
+		YwmsUserDO ywmsUser = ywmsUserService.get(userid);
+		String pic = "https://woyaoyue1221.oss-cn-shanghai.aliyuncs.com/"+ywmsUser.getPortraiturl();
+		ywmsUser.setPortraiturl(pic) ;
+		if (ywmsUser.getUserbirthday()!=null){
+			java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
+			String date = formatter.format(ywmsUser.getUserbirthday());//格式化数据
+			model.addAttribute("bir", date);
+		}else{
+			model.addAttribute("bir", null);
+		}
+
+		/*Date bir =  ;
+		Map<String,String> birth = new HashMap<>();
+
+		birth.put("birthday",bir.toString());
+		model.addAttribute("birth",birth);*/
+
+
+		model.addAttribute("ywmsUser", ywmsUser);
+		return "ywms/ywmsUser/look";
+	}
+
+	/**
+	 * 保存
+	 */
+	@ResponseBody
+	@PostMapping("/save")
+	@RequiresPermissions("ywms:ywmsUser:add")
+	public R save( YwmsUserDO ywmsUser){
+		if(ywmsUserService.save(ywmsUser)>0){
+			return R.ok();
+		}
+		return R.error();
+	}
+	/**
+	 * 修改
+	 */
+	@ResponseBody
+	@RequestMapping("/update")
+	@RequiresPermissions("ywms:ywmsUser:edit")
+	public R update( YwmsUserDO ywmsUser){
+		ywmsUserService.update(ywmsUser);
+		return R.ok();
+	}
+
+	/**
+	 * 修改缘豆
+	 */
+	@ResponseBody
+	@RequestMapping("/updaterecharge")
+	@RequiresPermissions("ywms:ywmsUser:updaterecharge")
+	public R updaterecharge( YwmsUserDO ywmsUser){
+		ywmsUserService.update(ywmsUser);
+
+
+		ywmsYbService.insertRecord(ywmsUser);
+
+		return R.ok();
+	}
+
+	/**
+	 * 冻结用户
+	 */
+	@PostMapping( "/freeze")
+	@ResponseBody
+	@RequiresPermissions("ywms:ywmsUser:freeze")
+	public R freeze(  YwmsUserDO ywmsUser){
+		if(ywmsUserService.editfreeze(ywmsUser)>0){
+			return R.ok();
+		}
+		return R.error();
+	}
+
+
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/remove")
+	@ResponseBody
+	@RequiresPermissions("ywms:ywmsUser:remove")
+	public R remove( Integer userid){
+		if(ywmsUserService.remove(userid)>0){
+			return R.ok();
+		}
+		return R.error();
+	}
+	//冻结用户
+	@GetMapping("/freeze/{userid}")
+	@RequiresPermissions("ywms:ywmsUser:freeze")
+	String dong(@PathVariable("userid") Integer userid,Model model){
+		YwmsUserDO ywmsUser = ywmsUserService.get(userid);
+		model.addAttribute("ywmsUser", ywmsUser);
+		return "ywms/ywmsUser/edit";
+	}
+
+
+
+
+
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/batchRemove")
+	@ResponseBody
+	@RequiresPermissions("ywms:ywmsUser:batchRemove")
+	public R remove(@RequestParam("ids[]") Integer[] userids){
+		ywmsUserService.batchRemove(userids);
+		return R.ok();
+	}
+
+}

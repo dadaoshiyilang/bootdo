@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="did" name="did" th:value="${dataPhotoVedio.did}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">用户id：</label>
+								<div class="col-sm-8">
+									<input id="userid" name="userid" th:value="${dataPhotoVedio.userid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态id：</label>
+								<div class="col-sm-8">
+									<input id="newsid" name="newsid" th:value="${dataPhotoVedio.newsid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">数据类型：</label>
+								<div class="col-sm-8">
+									<input id="datatype" name="datatype" th:value="${dataPhotoVedio.datatype}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">图片宽高比：</label>
+								<div class="col-sm-8">
+									<input id="picturerate" name="picturerate" th:value="${dataPhotoVedio.picturerate}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">数据url：</label>
+								<div class="col-sm-8">
+									<input id="dataurl" name="dataurl" th:value="${dataPhotoVedio.dataurl}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">有效标记(0.无效1.有效)：</label>
+								<div class="col-sm-8">
+									<input id="deleteflag" name="deleteflag" th:value="${dataPhotoVedio.deleteflag}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建时间：</label>
+								<div class="col-sm-8">
+									<input id="createtime" name="createtime" th:value="${dataPhotoVedio.createtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">违规标记：</label>
+								<div class="col-sm-8">
+									<input id="controlparams" name="controlparams" th:value="${dataPhotoVedio.controlparams}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/review/dataPhotoVedio/edit.js">
+	</script>
+</body>
+</html>

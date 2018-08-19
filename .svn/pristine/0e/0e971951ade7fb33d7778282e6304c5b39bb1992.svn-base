@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${ywmsJiguanginfo.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">推送给的用户id：</label>
+								<div class="col-sm-8">
+									<input id="touserid" name="touserid" th:value="${ywmsJiguanginfo.touserid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">昵称：</label>
+								<div class="col-sm-8">
+									<input id="nickname" name="nickname" th:value="${ywmsJiguanginfo.nickname}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">头像：</label>
+								<div class="col-sm-8">
+									<input id="portraiturl" name="portraiturl" th:value="${ywmsJiguanginfo.portraiturl}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态封面：</label>
+								<div class="col-sm-8">
+									<input id="thumbnailurl" name="thumbnailurl" th:value="${ywmsJiguanginfo.thumbnailurl}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态id：</label>
+								<div class="col-sm-8">
+									<input id="newsid" name="newsid" th:value="${ywmsJiguanginfo.newsid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">消息类型(1.系统消息,2.动态,3.)：</label>
+								<div class="col-sm-8">
+									<input id="type" name="type" th:value="${ywmsJiguanginfo.type}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">消息类型(例如"评论动态")：</label>
+								<div class="col-sm-8">
+									<input id="infotype" name="infotype" th:value="${ywmsJiguanginfo.infotype}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态类型(1.图片,2.视频)：</label>
+								<div class="col-sm-8">
+									<input id="datatype" name="datatype" th:value="${ywmsJiguanginfo.datatype}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">购买所获的缘币：</label>
+								<div class="col-sm-8">
+									<input id="yuanbi" name="yuanbi" th:value="${ywmsJiguanginfo.yuanbi}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">评论id：</label>
+								<div class="col-sm-8">
+									<input id="commentid" name="commentid" th:value="${ywmsJiguanginfo.commentid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">评论内容：</label>
+								<div class="col-sm-8">
+									<input id="commentcontext" name="commentcontext" th:value="${ywmsJiguanginfo.commentcontext}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">时间：</label>
+								<div class="col-sm-8">
+									<input id="createtime" name="createtime" th:value="${ywmsJiguanginfo.createtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">删除标记：</label>
+								<div class="col-sm-8">
+									<input id="del" name="del" th:value="${ywmsJiguanginfo.del}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsJiguanginfo/edit.js">
+	</script>
+</body>
+</html>

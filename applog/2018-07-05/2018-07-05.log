@@ -1,0 +1,123 @@
+2018-07-05 00:11:04 -Validating all active sessions...
+2018-07-05 00:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 00:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6062]
+2018-07-05 00:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6495]
+2018-07-05 01:11:04 -Validating all active sessions...
+2018-07-05 01:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 01:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 6928]
+2018-07-05 01:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 7361]
+2018-07-05 02:11:04 -Validating all active sessions...
+2018-07-05 02:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 02:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 7794]
+2018-07-05 02:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 8227]
+2018-07-05 03:11:04 -Validating all active sessions...
+2018-07-05 03:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 03:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 8660]
+2018-07-05 03:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9093]
+2018-07-05 04:11:04 -Validating all active sessions...
+2018-07-05 04:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 04:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9526]
+2018-07-05 04:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 9959]
+2018-07-05 05:11:04 -Validating all active sessions...
+2018-07-05 05:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 05:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 10392]
+2018-07-05 05:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 10825]
+2018-07-05 06:11:04 -Validating all active sessions...
+2018-07-05 06:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 06:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11258]
+2018-07-05 06:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 11691]
+2018-07-05 07:11:04 -Validating all active sessions...
+2018-07-05 07:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 07:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12124]
+2018-07-05 07:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12557]
+2018-07-05 08:11:04 -Validating all active sessions...
+2018-07-05 08:11:04 -Finished session validation.  No sessions were stopped.
+2018-07-05 08:11:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 12990]
+2018-07-05 08:41:12 -WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannelpool size = 0, active threads = 0, queued tasks = 0, completed tasks = 1], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 2, completed tasks = 13423]
+2018-07-05 09:03:38 -请求地址 : http://localhost/login;JSESSIONID=54becd8a-0838-4e5a-a0b4-3cc454c740a5
+2018-07-05 09:03:38 -HTTP METHOD : GET
+2018-07-05 09:03:38 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2018-07-05 09:03:38 -参数 : []
+2018-07-05 09:03:38 -耗时 : 20
+2018-07-05 09:03:38 -返回值 : login
+2018-07-05 09:03:39 -请求地址 : http://localhost/login
+2018-07-05 09:03:39 -HTTP METHOD : GET
+2018-07-05 09:03:39 -CLASS_METHOD : com.bootdo.system.controller.LoginController.login
+2018-07-05 09:03:39 -参数 : []
+2018-07-05 09:03:39 -耗时 : 1
+2018-07-05 09:03:39 -返回值 : login
+2018-07-05 09:03:41 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2018-07-05 09:03:41 -==> Parameters: admin(String)
+2018-07-05 09:03:41 -<==      Total: 1
+2018-07-05 09:03:41 -请求地址 : http://localhost/login
+2018-07-05 09:03:41 -HTTP METHOD : POST
+2018-07-05 09:03:41 -CLASS_METHOD : com.bootdo.system.controller.LoginController.ajaxLogin
+2018-07-05 09:03:41 -参数 : [admin, 111111]
+2018-07-05 09:03:41 -==>  Preparing: select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user WHERE username = ? order by user_id desc 
+2018-07-05 09:03:41 -==> Parameters: admin(String)
+2018-07-05 09:03:41 -<==      Total: 1
+2018-07-05 09:03:41 -耗时 : 18
+2018-07-05 09:03:41 -返回值 : {msg=操作成功, code=0}
+2018-07-05 09:03:41 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-07-05 09:03:41 -==> Parameters: 1(Long), admin(String), 登录(String), 18(Integer), com.bootdo.system.controller.LoginController.ajaxLogin()(String), null, 127.0.0.1(String), 2018-07-05 09:03:41.28(Timestamp)
+2018-07-05 09:03:41 -<==    Updates: 1
+2018-07-05 09:03:41 -请求地址 : http://localhost/index
+2018-07-05 09:03:41 -HTTP METHOD : GET
+2018-07-05 09:03:41 -CLASS_METHOD : com.bootdo.system.controller.LoginController.index
+2018-07-05 09:03:41 -参数 : [{}]
+2018-07-05 09:03:41 -==>  Preparing: select distinct m.menu_id , parent_id, name, url, perms,`type`,icon,order_num,gmt_create, gmt_modified from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id =ur.role_id where ur.user_id = ? and m.type in(0,1) order by m.order_num 
+2018-07-05 09:03:41 -==> Parameters: 1(Long)
+2018-07-05 09:03:41 -<==      Total: 30
+2018-07-05 09:03:41 -==>  Preparing: select `id`,`type`,`url`,`create_date` from sys_file where id = ? 
+2018-07-05 09:03:41 -==> Parameters: 138(Long)
+2018-07-05 09:03:41 -<==      Total: 1
+2018-07-05 09:03:41 -耗时 : 125
+2018-07-05 09:03:41 -返回值 : index_v1
+2018-07-05 09:03:41 -==>  Preparing: insert into sys_log ( `user_id`, `username`, `operation`, `time`, `method`, `params`, `ip`, `gmt_create` ) values ( ?, ?, ?, ?, ?, ?, ?, ? ) 
+2018-07-05 09:03:41 -==> Parameters: 1(Long), admin(String), 请求访问主页(String), 125(Integer), com.bootdo.system.controller.LoginController.index()(String), {"menus":[{"attributes":{"icon":"fa fa-bars","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-book","url":"/common/dict"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"78","parentId":"1","text":"数据字典"},{"attributes":{"icon":"fa fa-folder-open","url":"/common/sysFile"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"71","parentId":"1","text":"文件管理"}],"hasChildren":true,"hasParent":false,"id":"1","parentId":"0","text":"基础管理"},{"attributes":{"icon":"fa fa-desktop"},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/user/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"6","parentId":"3","text":"用户管理"},{"attributes":{"icon":"fa fa-paw","url":"sys/role"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"7","parentId":"3","text":"角色管理"},{"attributes":{"icon":"fa fa-th-list","url":"sys/menu/"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"2","parentId":"3","text":"系统菜单"},{"attributes":{"icon":"fa fa-users","url":"/system/sysDept"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"73","parentId":"3","text":"部门管理"}],"hasChildren":true,"hasParent":false,"id":"3","parentId":"0","text":"系统管理"},{"attributes":{"icon":"fa fa-gear","url":""},"checked":false,"children":[{"attributes":{"icon":"","url":"/swagger-ui.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"104","parentId":"77","text":"swagger"},{"attributes":{"icon":"fa fa-code","url":"common/generator"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"48","parentId":"77","text":"代码生成"},{"attributes":{"icon":"fa fa-hourglass-1","url":"common/job"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"72","parentId":"77","text":"计划任务"}],"hasChildren":true,"hasParent":false,"id":"77","parentId":"0","text":"系统工具"},{"attributes":{"icon":"fa fa-video-camera","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-user","url":"sys/online"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"92","parentId":"91","text":"在线用户"},{"attributes":{"icon":"fa fa-warning","url":"common/log"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"27","parentId":"91","text":"系统日志"},{"attributes":{"icon":"fa fa-caret-square-o-right","url":"/druid/index.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"57","parentId":"91","text":"运行监控"}],"hasChildren":true,"hasParent":false,"id":"91","parentId":"0","text":"系统监控"},{"attributes":{"icon":"fa fa-laptop","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-pencil-square","url":"oa/notify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"85","parentId":"84","text":"通知公告"},{"attributes":{"icon":"fa fa-envelope-square","url":"oa/notify/selfNotify"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"90","parentId":"84","text":"我的通知"}],"hasChildren":true,"hasParent":false,"id":"84","parentId":"0","text":"办公管理"},{"attributes":{"icon":"fa fa-rss","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-edit","url":"/blog/bContent/add"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"68","parentId":"49","text":"发布文章"},{"attributes":{"icon":"fa fa-file-image-o","url":"blog/bContent"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"50","parentId":"49","text":"文章列表"}],"hasChildren":true,"hasParent":false,"id":"49","parentId":"0","text":"博客管理"},{"attributes":{"icon":"fa fa-print","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-flag","url":"activiti/process"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"96","parentId":"93","text":"流程管理"},{"attributes":{"icon":"","url":"activiti/task/todo"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"101","parentId":"93","text":"待办任务"},{"attributes":{"icon":"fa fa-sort-amount-asc","url":"activiti/model"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"94","parentId":"93","text":"模型管理"}],"hasChildren":true,"hasParent":false,"id":"93","parentId":"0","text":"工作流程"},{"attributes":{"icon":"fa fa-bar-chart","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-area-chart","url":"/chart/graph_echarts.html"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"98","parentId":"97","text":"百度chart"}],"hasChildren":true,"hasParent":false,"id":"97","parentId":"0","text":"图表管理"},{"attributes":{"icon":"fa fa-edit","url":""},"checked":false,"children":[{"attributes":{"icon":"fa fa-hard-of-hearing","url":"review/news"},"checked":false,"children":[],"hasChildren":false,"hasParent":true,"id":"106","parentId":"105","text":"动态审核"}],"hasChildren":true,"hasParent":false,"id":"105","parentId":"0","text":"审核管理"}],"name":"超级管理员","picUrl":"/img/photo_s.jpg","(String), 127.0.0.1(String), 2018-07-05 09:03:41.487(Timestamp)
+2018-07-05 09:03:41 -<==    Updates: 1
+2018-07-05 09:03:41 -请求地址 : http://localhost/main
+2018-07-05 09:03:41 -HTTP METHOD : GET
+2018-07-05 09:03:41 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-07-05 09:03:41 -参数 : []
+2018-07-05 09:03:41 -耗时 : 1
+2018-07-05 09:03:41 -返回值 : main
+2018-07-05 09:03:41 -请求地址 : http://localhost/oa/notify/message
+2018-07-05 09:03:41 -HTTP METHOD : GET
+2018-07-05 09:03:41 -CLASS_METHOD : com.bootdo.oa.controller.NotifyController.message
+2018-07-05 09:03:41 -参数 : []
+2018-07-05 09:03:41 -==>  Preparing: select DISTINCT n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag` from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id WHERE r.is_read = ? and r.user_id = ? order by is_read ASC, update_date DESC limit ?, ? 
+2018-07-05 09:03:41 -==> Parameters: 0(String), 1(Long), 0(Integer), 3(Integer)
+2018-07-05 09:03:42 -<==      Total: 0
+2018-07-05 09:03:42 -==>  Preparing: select count(*) from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id where r.user_id =? and r.is_read = ? 
+2018-07-05 09:03:42 -==> Parameters: 1(Long), 0(String)
+2018-07-05 09:03:42 -<==      Total: 1
+2018-07-05 09:03:42 -耗时 : 34
+2018-07-05 09:03:42 -返回值 : com.bootdo.common.utils.PageUtils@13da9bcc
+2018-07-05 09:03:42 -请求地址 : http://localhost/main
+2018-07-05 09:03:42 -HTTP METHOD : GET
+2018-07-05 09:03:42 -CLASS_METHOD : com.bootdo.system.controller.LoginController.main
+2018-07-05 09:03:42 -参数 : []
+2018-07-05 09:03:42 -耗时 : 0
+2018-07-05 09:03:42 -返回值 : main
+2018-07-05 09:03:47 -==>  Preparing: select distinct m.perms from sys_menu m left join sys_role_menu rm on m.menu_id = rm.menu_id left join sys_user_role ur on rm.role_id = ur.role_id where ur.user_id = ? 
+2018-07-05 09:03:47 -==> Parameters: 1(Long)
+2018-07-05 09:03:47 -<==      Total: 53
+2018-07-05 09:03:47 -请求地址 : http://localhost/review/news
+2018-07-05 09:03:47 -HTTP METHOD : GET
+2018-07-05 09:03:47 -CLASS_METHOD : com.bootdo.review.controller.NewsController.News
+2018-07-05 09:03:47 -参数 : []
+2018-07-05 09:03:47 -耗时 : 0
+2018-07-05 09:03:47 -返回值 : review/news/news
+2018-07-05 09:03:47 -请求地址 : http://localhost/review/news/list
+2018-07-05 09:03:47 -HTTP METHOD : GET
+2018-07-05 09:03:47 -CLASS_METHOD : com.bootdo.review.controller.NewsController.list
+2018-07-05 09:03:47 -参数 : [{limit=10, offset=0, userid=}]
+2018-07-05 09:03:47 -==>  Preparing: select `newsid`,`userid`,`nickname`,`portraiturl`,`datatype`,`remark`,`freetolook`,`costtolook`,`newstags`,`newsinfo`,`size`,`thumbrate`,`thumbnailurl`,`newsloc`,`likecount`,`favocount`,`playcount`,`commentcount`,`createtime`,`updatetime`,`deleteflag`,`illegaltype`,`longitude`,`latitude` from ywms_news order by newsid desc limit ?, ? 
+2018-07-05 09:03:47 -==> Parameters: 0(Integer), 10(Integer)
+2018-07-05 09:03:47 -<==      Total: 10
+2018-07-05 09:03:47 -==>  Preparing: select count(*) from ywms_news 
+2018-07-05 09:03:47 -==> Parameters: 
+2018-07-05 09:03:47 -<==      Total: 1
+2018-07-05 09:03:47 -耗时 : 72
+2018-07-05 09:03:47 -返回值 : com.bootdo.common.utils.PageUtils@58412780

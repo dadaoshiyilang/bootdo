@@ -1,0 +1,32 @@
+package com.bootdo.ywms.dao;
+
+import com.bootdo.ywms.domain.YwmsUserWithdrawalDO;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Mapper;
+
+/**
+ * 
+ * @author ffff
+ * @email 1992lcg@163.com
+ * @date 2018-07-16 14:03:50
+ */
+@Mapper
+public interface YwmsUserWithdrawalDao {
+
+	YwmsUserWithdrawalDO get(Integer id);
+	
+	List<YwmsUserWithdrawalDO> list(Map<String,Object> map);
+	
+	int count(Map<String,Object> map);
+	
+	int save(YwmsUserWithdrawalDO ywmsUserWithdrawal);
+	
+	int update(YwmsUserWithdrawalDO ywmsUserWithdrawal);
+	
+	int remove(Integer id);
+	
+	int batchRemove(Integer[] ids);
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins">
+				<div class="ibox-content">
+					<form class="form-horizontal m-t" id="signupForm">
+
+						<div class="form-group">
+							<table  >
+								<tr>
+									<td>
+										<label>发送对象</label>
+										<select data-placeholder="选择对象" id="choose"
+												tabindex="2" onchange="fun1()" >
+											<option value="">选择对象</option>
+											<option value="0">指定用户</option>
+											<option value="1">所有网红</option>
+											<option value="2">多个用户</option>
+											<option value="3">所有用户</option>
+										</select>
+									</td>
+
+									<td  style="width:1000px">
+										<label style="display: none; margin-left: 10px;width:200px"  id="yy">发送对象的眼缘id</label>
+										<input style="display: none; margin-left: 10px;width:200px" id="touserid"   type="text">
+
+										<label style="display: none; margin-left: 10px;width:200px"  id="yy1">发送对象的眼缘id</label>
+
+										<textarea  style="display: none; margin-left: 10px;width:100%;height: 400px"  id="userids" placeholder="">系统消息</textarea>
+									</td>
+								</tr>
+
+							</table>
+
+								<button style="float:right;" type="submit" class="btn btn-warning">确认发送</button>
+
+						</div>
+
+
+						<div class="form-group">
+							<label>请输入消息或公告内容</label>
+							<div>
+								<textarea  style="width:100%;height: 400px"  id="commentcontext">系统消息</textarea>
+							</div>
+						</div>
+
+
+						<div class="form-group">
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript" src="/js/appjs/ywms/ywmsJiguanginfo/pushInfo.js">
+</script>
+</body>
+</html>

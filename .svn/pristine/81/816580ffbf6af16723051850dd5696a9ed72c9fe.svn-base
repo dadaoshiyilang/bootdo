@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header">
+
+
+</head>
+<link rel="stylesheet" type="text/css" href="/js/appjs/banner/advertisePicture/layui.css" />
+<link rel="stylesheet" type="text/css" href="/js/appjs/banner/advertisePicture/laydate.css" />
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm" enctype='multipart/form-data'>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">广告名称：</label>
+								<div class="col-sm-8">
+									<input id="picName" name="picName" class="form-control" type="text" placeholder="请输入广告名称">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">广告链接地址：</label>
+								<div class="col-sm-8">
+									<input id="picUrl" name="picUrl" class="form-control" type="text" placeholder="请输入正确的广告链接网址">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">上传广告图片：</label>
+								<div class="col-sm-8">
+									<input id="picDepositUrl" name="avatar_file" class="form-control" type="file" accept=".png,.jpg,.jpeg,.bmp,.gif" placeholder="请选择上传图片">
+								</div>
+							</div>
+								<div class="form-group">	
+								<label class="col-sm-3 control-label">排序顺序：</label>
+								<div class="col-sm-8">
+									<input id="sortNo" name="sortNo" class="form-control" type="text" placeholder="请输入排序顺序(数字)">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">上线时间：</label>
+								<div class="col-sm-8">
+								        <input type="text" name="starttime" id="starttime" lay-verify="date" placeholder="请输入上线时间(yyyy-MM-dd)" autocomplete="off" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">结束时间：</label>
+								<div class="col-sm-8">
+									<input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="请输入结束时间(yyyy-MM-dd)" autocomplete="off" class="form-control">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/banner/advertisePicture/add.js"></script>
+	<script src="/js/appjs/banner/advertisePicture/layui.all.js"></script>
+	<script>
+	layui.use(['form', 'layedit', 'laydate'], function(){
+		  var form = layui.form
+		  ,layer = layui.layer
+		  ,layedit = layui.layedit
+		  ,laydate = layui.laydate;
+		  //日期
+		  laydate.render({
+		    elem: '#starttime'
+		  });
+		  laydate.render({
+			    elem: '#endtime'
+		  });
+		});
+	</script>
+</body>
+</html>

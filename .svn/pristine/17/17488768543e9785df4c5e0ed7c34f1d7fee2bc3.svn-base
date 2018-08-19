@@ -1,0 +1,143 @@
+package com.bootdo.ywms.service.impl;
+
+import com.bootdo.ywms.dao.YwmsOrderDao;
+import com.bootdo.ywms.dao.YwmsUserDao;
+import com.bootdo.ywms.domain.YwmsOrderDO;
+import com.bootdo.ywms.domain.YwmsUserDO;
+import com.bootdo.ywms.domain.YwmsnumDO;
+import com.bootdo.ywms.service.YwmsOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+
+
+@Service
+public class YwmsOrderServiceImpl implements YwmsOrderService {
+	@Autowired
+	private YwmsOrderDao ywmsOrderDao;
+	@Autowired
+	private YwmsUserDao ywmsUserDao;
+	@Override
+	public YwmsOrderDO get(Integer orderid){
+		return ywmsOrderDao.get(orderid);
+	}
+	
+	@Override
+	public List<YwmsOrderDO> list(Map<String, Object> map){
+		Date time = new Date();
+		SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
+		String nowtime = format0.format(time.getTime());//这个就是把时间戳经过处理得到期望格式的时间
+		map.put("nowtime",nowtime);
+		return ywmsOrderDao.list(map);
+	}
+
+	@Override
+	public YwmsnumDO num(Map<String, Object> map) {
+		if ((map.get("time") != null || !"".equals(((String)map.get("time")).trim()))){
+			if (map.get("time").equals("0")){
+				Date time = new Date();
+				SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
+				String nowtime = format0.format(time.getTime());//这个就是把时间戳经过处理得到期望格式的时间
+				map.put("nowtime",nowtime);
+
+			}else{
+				map.put("nowtime",map.get("time"));
+			}
+		}
+
+		YwmsnumDO a =  ywmsOrderDao.num(map);
+		YwmsnumDO b =ywmsOrderDao.num1(map);
+		a.setTodaymoneynum(b.getTodaymoneynum());
+		a.setTodayusernum(b.getTodayusernum());
+		return a;
+	}
+
+	@Override
+	public int count(Map<String, Object> map){
+		return ywmsOrderDao.count(map);
+	}
+	
+	@Override
+	public int save(YwmsOrderDO ywmsOrder){
+		return ywmsOrderDao.save(ywmsOrder);
+	}
+
+
+	@Override
+	public int recharge(YwmsOrderDO ywmsOrder){
+		//这里取到的userid是用户在页面中输入的yyid 需要去用户表中查找出该用户的真正userid,然后存入到order表中
+		if (ywmsOrder.getUserid()!=null){
+			YwmsUserDO user =  ywmsUserDao.get1(String.valueOf(ywmsOrder.getUserid()));
+			//应为订单表中没有眼缘id的字段.所以使用字符类型同为varchar的ordersn占时保存一下
+			if (user.getUserid()!=null){
+				ywmsOrder.setUserid(user.getUserid());
+			}
+		}
+		int rs = ywmsOrderDao.recharge(ywmsOrder);
+
+		if(rs>0){
+			//增加用户缘豆余额
+			YwmsUserDO user = new YwmsUserDO();
+			user.setUserid(ywmsOrder.getUserid());
+
+			BigDecimal a = new BigDecimal(ywmsOrder.getProductname());
+			user.setRecharge(a);
+			ywmsUserDao.updaterecharge(user);
+		}
+
+		return rs;
+	}
+
+	@Override
+	public int update(YwmsOrderDO ywmsOrder){
+		return ywmsOrderDao.update(ywmsOrder);
+	}
+	
+	@Override
+	public int remove(Integer orderid){
+		return ywmsOrderDao.remove(orderid);
+	}
+	
+	@Override
+	public int batchRemove(Integer[] orderids){
+		return ywmsOrderDao.batchRemove(orderids);
+	}
+
+
+
+
+
+
+	@Override
+	public List<YwmsOrderDO> listyun(Map<String, Object> map){
+		return ywmsOrderDao.listyun(map);
+	}
+
+	@Override
+	public int countyun(Map<String, Object> map){
+		return ywmsOrderDao.countyun(map);
+	}
+
+
+
+	@Override
+	public YwmsnumDO  numYun(Map<String, Object> map) {
+				Date time = new Date();
+				SimpleDateFormat format0 = new SimpleDateFormat("yyyy-MM-dd");
+				String nowtime = format0.format(time.getTime());//这个就是把时间戳经过处理得到期望格式的时间
+				map.put("nowtime",nowtime);
+		YwmsnumDO a =  ywmsOrderDao.numYun1(map);
+		YwmsnumDO b =ywmsOrderDao.numYun2(map);
+		a.setTodaymoneynum(b.getTodaymoneynum());
+		a.setTodayusernum(b.getTodayusernum());
+		return a;
+	}
+
+
+}

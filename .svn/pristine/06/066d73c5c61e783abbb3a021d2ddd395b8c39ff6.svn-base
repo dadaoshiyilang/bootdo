@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<table  >
+							<tr>
+								<td>
+									<label >眼缘id </label>
+									<input id="searchyyid" type="text"  >
+
+								</td>
+
+								<td>
+									<label>昵称 </label>
+									<input id="searchnickname" type="text"
+										 >
+								</td>
+								<td>
+									<label style="margin-left: 10px;">选择性别 </label>
+									<select data-placeholder="选择性别" id="searchusersex"
+											tabindex="2" >
+										<option value="">选择性别</option>
+										<option value="0">女</option>
+										<option value="1">男</option>
+									</select>
+								</td>
+								<td>
+									<label style="margin-left: 10px;">充值渠道 </label>
+									<select data-placeholder="充值渠道" id="searchpaytype"
+											tabindex="2" >
+										<option value="">选择充值方式</option>
+										<option value="4">云支付支付宝</option>
+										<option value="5">云支付微信</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+
+								<td>
+									<label>充值日期起始 </label>
+									<input style="margin-top: 5px;"  id="start" type="date" value=""/>
+								</td>
+								<td>
+									<label style="margin-left: 10px;">充值日期結束 </label>
+									<input  style="margin-top: 5px;" id="end" type="date" value=""/>
+								</td>
+								<td></td>
+							</tr>
+						</table>
+
+						<br/>
+						<br/>
+
+						<button id="boot1" class="btn btn-success btn-lg" onclick="reLoad1()">当天充值</button>
+						<button id="boot5" class="btn btn-default btn-lg" onclick="reLoad5()">昨天充值</button>
+
+						<button id="boot2" class="btn btn-default btn-lg" onclick="reLoad2()">最近7天充值</button>
+
+						<button id="boot3" class="btn btn-default btn-lg" onclick="reLoad3()">最近一个月充值</button>
+
+						<button id="boot4" class="btn btn-danger" onclick="reLoad4()">清除</button>
+
+						<input id="choosetime" type="hidden"   value="1">
+
+
+						<br/>
+						<div style="margin-top: 30px" id="today">
+
+						</div>
+
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsYun/ywmsOrder.js"></script>
+</body>
+</html>

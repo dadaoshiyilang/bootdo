@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.statsensation.dao.SensationDetailDao">
+
+	<select id="list" resultType="com.bootdo.statsensation.domain.SensationDetailDO">
+		SELECT 
+			  (CASE t1.expensetype
+			  WHEN '1' THEN '专辑动态收益'
+			  WHEN '2' THEN '视频动态收益'
+			  WHEN '3' THEN '语音聊天收益'
+			  WHEN '4' THEN '视频聊天收益'
+				WHEN '5' THEN '礼物收益'
+			  END) as channel,
+			  t2.yyid,
+			  t2.nickname,
+			  t1.expensenum,
+			  t1.createtime as changeTime
+		FROM ywms_expense_record t1 inner join
+		ywms_user t2 on t1.userid = t2.userid
+		<where>
+			t1.del =1
+			<if test="touserid != null and touserid != ''"> and t1.touserid = #{touserid} </if>
+			<if test="createTime != null and createTime != ''"> and DATE_FORMAT(t1.createtime,'%Y-%m-%d') = #{createTime} </if>
+		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_expense_record t1 inner join
+		ywms_user t2 on t1.userid = t2.userid
+		<where>
+			t1.del =1
+			<if test="touserid != null and touserid != ''"> and t1.touserid = #{touserid} </if>
+			<if test="createTime != null and createTime != ''"> and DATE_FORMAT(t1.createtime,'%Y-%m-%d') = #{createTime} </if>
+		</where>
+	</select>
+	
+	<select id="getSensation" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT *
+        FROM 
+        stat_sensation_daily
+        <where>
+        	status ='1'
+			<if test="whid != null and whid != ''"> and whid = #{whid} </if>
+			<if test="yyid != null">and yyid = #{yyid} </if>
+			<if test="createTime != null and createTime != ''"> and DATE_FORMAT(create_time,'%Y-%m-%d') = #{createTime}</if>
+        </where>
+	</select>
+
+</mapper>

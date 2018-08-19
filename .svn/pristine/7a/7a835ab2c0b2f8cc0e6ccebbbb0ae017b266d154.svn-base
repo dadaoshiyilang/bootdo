@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.review.dao.NewsDao">
+
+	<select id="get" resultType="com.bootdo.review.domain.NewsDO">
+		select `newsid`,`userid`,`nickname`,`portraiturl`,`datatype`,`remark`,`freetolook`,`costtolook`,`newstags`,`newsinfo`,`size`,`thumbrate`,`thumbnailurl`,`newsloc`,`likecount`,`favocount`,`playcount`,`commentcount`,`createtime`,`updatetime`,`deleteflag`,`illegaltype`,`longitude`,`latitude` from ywms_news where newsid = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.review.domain.NewsDO">
+		select t1.`newsid`,t1.`userid`,t1.`nickname`,t1.`portraiturl`,t1.`datatype`,t1.`remark`,t1.`freetolook`,t1.`costtolook`,t1.`newstags`,t1.`newsinfo`,
+		t1.`size`,t1.`thumbrate`,t1.`thumbnailurl`,t1.`newsloc`,t1.`likecount`,t1.`favocount`,t1.`playcount`,t1.`commentcount`,t1.`createtime`,
+		t1.`updatetime`,t1.`deleteflag`,t1.`illegaltype`,t1.`longitude`,t1.`latitude`,t2.`yyid` from ywms_news t1 left join ywms_user t2 on t1.userid = t2.userid
+        <where>  
+        		   t1.deleteflag=1 and t1.illegaltype='100'
+		  		  <if test="newsid != null and newsid != ''"> and t1.newsid = #{newsid} </if>
+		  		  <if test="userid != null and userid != ''"> and  t1.userid = #{userid} </if>
+		  		  <if test="nickname != null and nickname != ''"> and  t1.nickname = #{nickname} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and  t1.portraiturl = #{portraiturl} </if>
+		  		  <if test="datatype != null and datatype != ''"> and  t1.datatype = #{datatype} </if>
+		  		  <if test="remark != null and remark != ''"> and  t1.remark = #{remark} </if>
+		  		  <if test="freetolook != null and freetolook != ''"> and  t1.freetolook = #{freetolook} </if>
+		  		  <if test="costtolook != null and costtolook != ''"> and  t1.costtolook = #{costtolook} </if>
+		  		  <if test="newstags != null and newstags != ''"> and  t1.newstags = #{newstags} </if>
+		  		  <if test="newsinfo != null and newsinfo != ''"> and  t1.newsinfo = #{newsinfo} </if>
+		  		  <if test="size != null and size != ''"> and  t1.size = #{size} </if>
+		  		  <if test="thumbrate != null and thumbrate != ''"> and  t1.thumbrate = #{thumbrate} </if>
+		  		  <if test="thumbnailurl != null and thumbnailurl != ''"> and  t1.thumbnailurl = #{thumbnailurl} </if>
+		  		  <if test="newsloc != null and newsloc != ''"> and  t1.newsloc = #{newsloc} </if>
+		  		  <if test="likecount != null and likecount != ''"> and  t1.likecount = #{likecount} </if>
+		  		  <if test="favocount != null and favocount != ''"> and  t1.favocount = #{favocount} </if>
+		  		  <if test="playcount != null and playcount != ''"> and  t1.playcount = #{playcount} </if>
+		  		  <if test="commentcount != null and commentcount != ''"> and  t1.commentcount = #{commentcount} </if>
+		  		  <if test="createtime != null and createtime != ''"> and  t1.createtime = #{createtime} </if>
+		  		  <if test="updatetime != null and updatetime != ''"> and  t1.updatetime = #{updatetime} </if>
+		  		  <if test="deleteflag != null and deleteflag != ''"> and  t1.deleteflag = #{deleteflag} </if>
+		  		  <if test="illegaltype != null and illegaltype != ''"> and  t1.illegaltype = #{illegaltype} </if>
+		  		  <if test="longitude != null and longitude != ''"> and  t1.longitude = #{longitude} </if>
+		  		  <if test="latitude != null and latitude != ''"> and  t1.latitude = #{latitude} </if>
+		  		  <if test="yyid != null and yyid != ''">and t2.yyid = #{yyid} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by t1.newsid desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_news t1 left join ywms_user t2 on t1.userid = t2.userid
+        <where>  
+        		   t1.deleteflag=1 and t1.illegaltype='100'
+		  		  <if test="newsid != null and newsid != ''"> and t1.newsid = #{newsid} </if>
+		  		  <if test="userid != null and userid != ''"> and  t1.userid = #{userid} </if>
+		  		  <if test="nickname != null and nickname != ''"> and  t1.nickname = #{nickname} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and  t1.portraiturl = #{portraiturl} </if>
+		  		  <if test="datatype != null and datatype != ''"> and  t1.datatype = #{datatype} </if>
+		  		  <if test="remark != null and remark != ''"> and  t1.remark = #{remark} </if>
+		  		  <if test="freetolook != null and freetolook != ''"> and  t1.freetolook = #{freetolook} </if>
+		  		  <if test="costtolook != null and costtolook != ''"> and  t1.costtolook = #{costtolook} </if>
+		  		  <if test="newstags != null and newstags != ''"> and  t1.newstags = #{newstags} </if>
+		  		  <if test="newsinfo != null and newsinfo != ''"> and  t1.newsinfo = #{newsinfo} </if>
+		  		  <if test="size != null and size != ''"> and  t1.size = #{size} </if>
+		  		  <if test="thumbrate != null and thumbrate != ''"> and  t1.thumbrate = #{thumbrate} </if>
+		  		  <if test="thumbnailurl != null and thumbnailurl != ''"> and  t1.thumbnailurl = #{thumbnailurl} </if>
+		  		  <if test="newsloc != null and newsloc != ''"> and  t1.newsloc = #{newsloc} </if>
+		  		  <if test="likecount != null and likecount != ''"> and  t1.likecount = #{likecount} </if>
+		  		  <if test="favocount != null and favocount != ''"> and  t1.favocount = #{favocount} </if>
+		  		  <if test="playcount != null and playcount != ''"> and  t1.playcount = #{playcount} </if>
+		  		  <if test="commentcount != null and commentcount != ''"> and  t1.commentcount = #{commentcount} </if>
+		  		  <if test="createtime != null and createtime != ''"> and  t1.createtime = #{createtime} </if>
+		  		  <if test="updatetime != null and updatetime != ''"> and  t1.updatetime = #{updatetime} </if>
+		  		  <if test="deleteflag != null and deleteflag != ''"> and  t1.deleteflag = #{deleteflag} </if>
+		  		  <if test="illegaltype != null and illegaltype != ''"> and  t1.illegaltype = #{illegaltype} </if>
+		  		  <if test="longitude != null and longitude != ''"> and  t1.longitude = #{longitude} </if>
+		  		  <if test="latitude != null and latitude != ''"> and  t1.latitude = #{latitude} </if>
+		  		  <if test="yyid != null and yyid != ''">and t2.yyid = #{yyid} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.review.domain.NewsDO" useGeneratedKeys="true" keyProperty="newsid">
+		insert into ywms_news
+		(
+			`userid`, 
+			`nickname`, 
+			`portraiturl`, 
+			`datatype`, 
+			`remark`, 
+			`freetolook`, 
+			`costtolook`, 
+			`newstags`, 
+			`newsinfo`, 
+			`size`, 
+			`thumbrate`, 
+			`thumbnailurl`, 
+			`newsloc`, 
+			`likecount`, 
+			`favocount`, 
+			`playcount`, 
+			`commentcount`, 
+			`createtime`, 
+			`updatetime`, 
+			`deleteflag`, 
+			`illegaltype`, 
+			`longitude`, 
+			`latitude`
+		)
+		values
+		(
+			#{userid}, 
+			#{nickname}, 
+			#{portraiturl}, 
+			#{datatype}, 
+			#{remark}, 
+			#{freetolook}, 
+			#{costtolook}, 
+			#{newstags}, 
+			#{newsinfo}, 
+			#{size}, 
+			#{thumbrate}, 
+			#{thumbnailurl}, 
+			#{newsloc}, 
+			#{likecount}, 
+			#{favocount}, 
+			#{playcount}, 
+			#{commentcount}, 
+			#{createtime}, 
+			#{updatetime}, 
+			#{deleteflag}, 
+			#{illegaltype}, 
+			#{longitude}, 
+			#{latitude}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.review.domain.NewsDO">
+		update ywms_news 
+		<set>
+			<if test="userid != null">`userid` = #{userid}, </if>
+			<if test="nickname != null">`nickname` = #{nickname}, </if>
+			<if test="portraiturl != null">`portraiturl` = #{portraiturl}, </if>
+			<if test="datatype != null">`datatype` = #{datatype}, </if>
+			<if test="remark != null">`remark` = #{remark}, </if>
+			<if test="freetolook != null">`freetolook` = #{freetolook}, </if>
+			<if test="costtolook != null">`costtolook` = #{costtolook}, </if>
+			<if test="newstags != null">`newstags` = #{newstags}, </if>
+			<if test="newsinfo != null">`newsinfo` = #{newsinfo}, </if>
+			<if test="size != null">`size` = #{size}, </if>
+			<if test="thumbrate != null">`thumbrate` = #{thumbrate}, </if>
+			<if test="thumbnailurl != null">`thumbnailurl` = #{thumbnailurl}, </if>
+			<if test="newsloc != null">`newsloc` = #{newsloc}, </if>
+			<if test="likecount != null">`likecount` = #{likecount}, </if>
+			<if test="favocount != null">`favocount` = #{favocount}, </if>
+			<if test="playcount != null">`playcount` = #{playcount}, </if>
+			<if test="commentcount != null">`commentcount` = #{commentcount}, </if>
+			<if test="createtime != null">`createtime` = #{createtime}, </if>
+			<if test="updatetime != null">`updatetime` = #{updatetime}, </if>
+			<if test="deleteflag != null">`deleteflag` = #{deleteflag}, </if>
+			<if test="illegaltype != null">`illegaltype` = #{illegaltype}, </if>
+			<if test="longitude != null">`longitude` = #{longitude}, </if>
+			<if test="latitude != null">`latitude` = #{latitude}</if>
+		</set>
+		where newsid = #{newsid}
+	</update>
+	
+	<delete id="remove">
+		delete from ywms_news where newsid = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from ywms_news where newsid in 
+		<foreach item="newsid" collection="array" open="(" separator="," close=")">
+			#{newsid}
+		</foreach>
+	</delete>
+	
+	<update id="updateNews" parameterType="com.bootdo.review.domain.NewsDO">
+		update ywms_news set size=size - 1
+		where newsid = #{newsid} 
+	</update>
+	
+	
+	<select id="getNewsINfo" resultType="com.bootdo.review.domain.NewsDO">
+		select t1.portraiturl,t2.dataurl from ywms_news t1 left join ywms_data_photo_vedio t2 
+			on t1.newsid = t2.newsid where t1.newsid = #{newsid}
+	</select>
+	
+	
+	
+	
+	
+
+</mapper>

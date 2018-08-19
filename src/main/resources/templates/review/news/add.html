@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">发送人id：</label>
+								<div class="col-sm-8">
+									<input id="userid" name="userid" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">昵称：</label>
+								<div class="col-sm-8">
+									<input id="nickname" name="nickname" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">头像：</label>
+								<div class="col-sm-8">
+									<input id="portraiturl" name="portraiturl" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">类型(1.图片2.视频)：</label>
+								<div class="col-sm-8">
+									<input id="datatype" name="datatype" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态描述：</label>
+								<div class="col-sm-8">
+									<input id="remark" name="remark" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">该动态免费查看的张数：</label>
+								<div class="col-sm-8">
+									<input id="freetolook" name="freetolook" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">查看剩下的需要的付费(缘豆)：</label>
+								<div class="col-sm-8">
+									<input id="costtolook" name="costtolook" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态标签：</label>
+								<div class="col-sm-8">
+									<input id="newstags" name="newstags" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态内容(封面图片地址)：</label>
+								<div class="col-sm-8">
+									<input id="newsinfo" name="newsinfo" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">该动态的图片数量：</label>
+								<div class="col-sm-8">
+									<input id="size" name="size" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">封面图的宽高比：</label>
+								<div class="col-sm-8">
+									<input id="thumbrate" name="thumbrate" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">封面图地址：</label>
+								<div class="col-sm-8">
+									<input id="thumbnailurl" name="thumbnailurl" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">发动态时所在地址：</label>
+								<div class="col-sm-8">
+									<input id="newsloc" name="newsloc" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">点赞数：</label>
+								<div class="col-sm-8">
+									<input id="likecount" name="likecount" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">动态被收藏数：</label>
+								<div class="col-sm-8">
+									<input id="favocount" name="favocount" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">播放数：</label>
+								<div class="col-sm-8">
+									<input id="playcount" name="playcount" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">评论数：</label>
+								<div class="col-sm-8">
+									<input id="commentcount" name="commentcount" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">创建时间：</label>
+								<div class="col-sm-8">
+									<input id="createtime" name="createtime" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">修改时间：</label>
+								<div class="col-sm-8">
+									<input id="updatetime" name="updatetime" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">有效标记：</label>
+								<div class="col-sm-8">
+									<input id="deleteflag" name="deleteflag" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">100.合法,101.违规类型99处理中：</label>
+								<div class="col-sm-8">
+									<input id="illegaltype" name="illegaltype" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="longitude" name="longitude" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="latitude" name="latitude" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/review/news/add.js">
+	</script>
+</body>
+</html>

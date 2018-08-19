@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+					<form class="form-horizontal m-t" id="signupForm">
+							<table class="table_solid" border="0">
+								<tr th:each="collect,iterStat :${list}" style="display:inline-block"> 
+									<td >
+										<img style="width:200;height:200px;" th:src="${collect.dataurl}"/>
+									</td>
+				 				</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/review/news/edit.js">
+	</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.sensation.dao.OnlineSensationDao">
+
+	<select id="get" resultType="com.bootdo.sensation.domain.OnlineSensationDO">
+		select `id`,`whid`,`whname`,`whphone`,`whaddress`,`whemail`,`whnums`,`earnings_total`,`withdraw_total`,`create_time`,`update_time`,`status`,`remark` from ywms_online_sensation where id = #{value}
+	</select>
+	
+	<select id="getSensation" resultType="com.bootdo.sensation.domain.OnlineSensationDO">
+		select `id`,`whid`,`whname`,`whphone`,`whaddress`,`whemail`,`whnums`,`earnings_total`,`withdraw_total`,`create_time`,`update_time`,`status`,`remark` from ywms_online_sensation where whid = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.sensation.domain.OnlineSensationDO">
+		select `id`,`whid`,`whname`,`whphone`,`whaddress`,`whemail`,`whnums`,`earnings_total`,`withdraw_total`,`create_time`,`update_time`,`status`,`remark` from ywms_online_sensation
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="whid != null and whid != ''"> and whid = #{whid} </if>
+		  		  <if test="whname != null and whname != ''"> and whname = #{whname} </if>
+		  		  <if test="whphone != null and whphone != ''"> and whphone = #{whphone} </if>
+		  		  <if test="whaddress != null and whaddress != ''"> and whaddress = #{whaddress} </if>
+		  		  <if test="whemail != null and whemail != ''"> and whemail = #{whemail} </if>
+		  		  <if test="whnums != null and whnums != ''"> and whnums = #{whnums} </if>
+		  		  <if test="earningsTotal != null and earningsTotal != ''"> and earnings_total = #{earningsTotal} </if>
+		  		  <if test="withdrawTotal != null and withdrawTotal != ''"> and withdraw_total = #{withdrawTotal} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_online_sensation
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="whid != null and whid != ''"> and whid = #{whid} </if>
+		  		  <if test="whname != null and whname != ''"> and whname = #{whname} </if>
+		  		  <if test="whphone != null and whphone != ''"> and whphone = #{whphone} </if>
+		  		  <if test="whaddress != null and whaddress != ''"> and whaddress = #{whaddress} </if>
+		  		  <if test="whemail != null and whemail != ''"> and whemail = #{whemail} </if>
+		  		  <if test="whnums != null and whnums != ''"> and whnums = #{whnums} </if>
+		  		  <if test="earningsTotal != null and earningsTotal != ''"> and earnings_total = #{earningsTotal} </if>
+		  		  <if test="withdrawTotal != null and withdrawTotal != ''"> and withdraw_total = #{withdrawTotal} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.sensation.domain.OnlineSensationDO" useGeneratedKeys="true" keyProperty="id">
+		insert into ywms_online_sensation
+		(
+			`whid`, 
+			`whname`, 
+			`whphone`, 
+			`whaddress`, 
+			`whemail`, 
+			`whnums`, 
+			`earnings_total`, 
+			`withdraw_total`, 
+			`create_time`, 
+			`update_time`, 
+			`status`, 
+			`remark`
+		)
+		values
+		(
+			#{whid}, 
+			#{whname}, 
+			#{whphone}, 
+			#{whaddress}, 
+			#{whemail}, 
+			#{whnums}, 
+			#{earningsTotal}, 
+			#{withdrawTotal}, 
+			#{createTime}, 
+			#{updateTime}, 
+			#{status}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.sensation.domain.OnlineSensationDO">
+		update ywms_online_sensation 
+		<set>
+			<if test="whid != null">`whid` = #{whid}, </if>
+			<if test="whname != null">`whname` = #{whname}, </if>
+			<if test="whphone != null">`whphone` = #{whphone}, </if>
+			<if test="whaddress != null">`whaddress` = #{whaddress}, </if>
+			<if test="whemail != null">`whemail` = #{whemail}, </if>
+			<if test="whnums != null">`whnums` = #{whnums}, </if>
+			<if test="earningsTotal != null">`earnings_total` = #{earningsTotal}, </if>
+			<if test="withdrawTotal != null">`withdraw_total` = #{withdrawTotal}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from ywms_online_sensation where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from ywms_online_sensation where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

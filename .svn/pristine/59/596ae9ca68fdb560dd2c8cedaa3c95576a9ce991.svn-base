@@ -1,0 +1,73 @@
+package com.bootdo.ywms.service.impl;
+
+import com.bootdo.ywms.dao.YwmsPhotoReviewDao;
+import com.bootdo.ywms.domain.YwmsPhotoReviewDO;
+import com.bootdo.ywms.service.YwmsPhotoReviewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Map;
+
+
+
+@Service
+public class YwmsPhotoReviewServiceImpl implements YwmsPhotoReviewService {
+	@Autowired
+	private YwmsPhotoReviewDao ywmsPhotoReviewDao;
+	
+	@Override
+	public YwmsPhotoReviewDO get(Long id){
+		return ywmsPhotoReviewDao.get(id);
+	}
+	
+	@Override
+	public List<YwmsPhotoReviewDO> list(Map<String, Object> map){
+		return ywmsPhotoReviewDao.list(map);
+	}
+	
+	@Override
+	public int count(Map<String, Object> map){
+		return ywmsPhotoReviewDao.count(map);
+	}
+	
+	@Override
+	public int save(YwmsPhotoReviewDO ywmsPhotoReview){
+		return ywmsPhotoReviewDao.save(ywmsPhotoReview);
+	}
+	
+	@Override
+	public int update(YwmsPhotoReviewDO ywmsPhotoReview){
+		return ywmsPhotoReviewDao.update(ywmsPhotoReview);
+	}
+	
+	@Override
+	public int remove(Long id){
+		return ywmsPhotoReviewDao.remove(id);
+	}
+	@Override
+	public int no(Long id){
+		return ywmsPhotoReviewDao.no(id);
+	}
+
+	@Override
+	@Transactional
+	public int yes(YwmsPhotoReviewDO ywmsPhotoReview){
+		int a = ywmsPhotoReviewDao.yes(ywmsPhotoReview);
+		ywmsPhotoReviewDao.updatephoto(ywmsPhotoReview);
+		return a ;
+	}
+
+
+	@Override
+	public int batchRemove(Long[] ids){
+		return ywmsPhotoReviewDao.batchRemove(ids);
+	}
+
+	@Override
+	public int batchPass(Integer[] dids, String status){
+		return ywmsPhotoReviewDao.batchPass(dids, status);
+	}
+
+}

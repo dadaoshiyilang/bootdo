@@ -1,0 +1,61 @@
+package com.bootdo.statsensation.service.impl;
+
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.bootdo.statsensation.dao.SensationDailyDao;
+import com.bootdo.statsensation.domain.SensationDailyDO;
+import com.bootdo.statsensation.service.SensationDailyService;
+import com.bootdo.ywms.domain.YwmsUserDO;
+import com.bootdo.ywms.service.YwmsUserService;
+
+
+@Service
+public class SensationDailyServiceImpl implements SensationDailyService {
+	@Autowired
+	private SensationDailyDao sensationDailyDao;
+	
+	@Autowired
+	private YwmsUserService ywmsUserService;
+	
+	@Override
+	public SensationDailyDO get(Long id){
+		return sensationDailyDao.get(id);
+	}
+	
+	@Override
+	public List<SensationDailyDO> list(Map<String, Object> map){
+		return sensationDailyDao.list(map);
+	}
+	
+	@Override
+	public int count(Map<String, Object> map){
+		return sensationDailyDao.count(map);
+	}
+	
+	@Override
+	public int save(SensationDailyDO sensationDaily, YwmsUserDO userDO){
+		userDO.setAdminaffirm("3");// 合作网红
+		userDO.setWhcooperation(1);// 合作网红：是
+		userDO.setWhcompany(sensationDaily.getWhname());// 网红公司名称
+		userDO.setWhcomId(sensationDaily.getWhid());// 网红公司Id
+		return ywmsUserService.update(userDO);
+	}
+	
+	@Override
+	public int update(SensationDailyDO sensationDaily){
+		return sensationDailyDao.update(sensationDaily);
+	}
+	
+	@Override
+	public int remove(Long id){
+		return sensationDailyDao.remove(id);
+	}
+	
+	@Override
+	public int batchRemove(Long[] ids){
+		return sensationDailyDao.batchRemove(ids);
+	}
+	
+}

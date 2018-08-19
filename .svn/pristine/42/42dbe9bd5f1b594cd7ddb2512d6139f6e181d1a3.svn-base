@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.ywms.dao.YwmsYbDao">
+	<select id="list" resultType="com.bootdo.ywms.domain.YwmsYbDO">
+		SELECT * FROM (
+		SELECT userid AS id, 1 AS TYPE, expensetype, expensenum AS num,  createtime AS createtime FROM `ywms_expense_record` WHERE del =1
+		UNION ALL
+		SELECT userid AS id, 2 AS TYPE, 0, productname AS num,  createtime AS createtime FROM `ywms_order` WHERE state=1 AND deleteflag = 1
+		UNION ALL
+		SELECT userid AS id, 3 AS TYPE, 0, expensenum AS num,  createtime AS createtime FROM `ywms_present_record`  WHERE STATUS IN ('0','1')  AND del = 1
+		) AS ref
+	 	 WHERE  id = #{id}
+		ORDER BY createtime DESC
+
+
+	</select>
+
+
+	<select id="list2" resultType="com.bootdo.ywms.domain.YwmsYbDO">
+		  SELECT * FROM (
+		    SELECT touserid AS id, 1 AS TYPE, expensetype, yuanbi AS num,  createtime AS createtime FROM `ywms_expense_record` WHERE del =1 AND expensetype !=6
+                UNION ALL
+                SELECT touserid AS id, 2 AS TYPE, 0, expensenum/2 AS num,  createtime AS createtime FROM `ywms_present_record`  WHERE STATUS IN ('0','1') AND del = 1
+                UNION ALL
+                SELECT userid AS id, 3 AS TYPE,withdrawstatus AS expensetype, yuanbi AS num,  createtime AS createtime FROM `ywms_user_withdrawal`  WHERE  del = 1 AND withdrawstatus  IN ('0','1','2')
+                ) AS ref
+		WHERE  id = #{id}
+		ORDER BY createtime DESC
+
+
+	</select>
+
+	<insert id="insertRecord" parameterType="com.bootdo.ywms.domain.YwmsUserDO">
+		  INSERT INTO `ywms_expense_record` ( `createtime`, `userid`, `expensetype`,`expensenum`, `touserid`,`status`, `del`)
+            VALUES
+            (
+              now(),#{userid},6, #{recharge},#{userid}, 1, 1
+              )
+	</insert>
+</mapper>

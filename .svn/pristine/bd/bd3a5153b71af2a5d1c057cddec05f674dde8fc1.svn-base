@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.banner.dao.AdvertisePictureDao">
+
+	<select id="get" resultType="com.bootdo.banner.domain.AdvertisePictureDO">
+		select `id`,`pic_name`,`pic_url`,`pic_deposit_url`,`sort_no`,`banner`,
+		DATE_FORMAT(starttime,'%Y-%m-%d') as starttime, DATE_FORMAT(endtime,'%Y-%m-%d' ) as endtime,`text`,`create_time`,`create_user`,`update_time`,
+		`update_user`,`status`,sale_status from ywms_advertise_picture where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.banner.domain.AdvertisePictureDO">
+		select `id`,`pic_name`,`pic_url`,`pic_deposit_url`,`sort_no`,`banner`,`starttime`,`endtime`,`text`,`create_time`,`create_user`,`update_time`,`update_user`,`status`,sale_status from ywms_advertise_picture
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="picName != null and picName != ''"> and pic_name like CONCAT('%', #{picName, jdbcType=VARCHAR}, '%')  </if>
+		  		  <if test="picUrl != null and picUrl != ''"> and pic_url = #{picUrl} </if>
+		  		  <if test="picDepositUrl != null and picDepositUrl != ''"> and pic_deposit_url = #{picDepositUrl} </if>
+		  		  <if test="sortNo != null and sortNo != ''"> and sort_no = #{sortNo} </if>
+		  		  <if test="banner != null and banner != ''"> and banner = #{banner} </if>
+		  		  
+		  		  
+		  		  <if test="starttime != null and starttime != ''">
+		     		<![CDATA[ AND starttime>= #{starttime}]]>
+				  </if>
+			
+				  <if test="endtime != null and endtime != ''">
+		     		<![CDATA[AND endtime <= CONCAT(#{endtime},' 23:59:59') ]]>
+				  </if>
+		  		  
+		  		  <if test="text != null and text != ''"> and text = #{text} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="salestatus != null and salestatus != ''"> and sale_status = #{salestatus} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from ywms_advertise_picture
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="picName != null and picName != ''"> and pic_name like CONCAT('%', #{picName, jdbcType=VARCHAR}, '%') </if>
+		  		  <if test="picUrl != null and picUrl != ''"> and pic_url = #{picUrl} </if>
+		  		  <if test="picDepositUrl != null and picDepositUrl != ''"> and pic_deposit_url = #{picDepositUrl} </if>
+		  		  <if test="sortNo != null and sortNo != ''"> and sort_no = #{sortNo} </if>
+		  		  <if test="banner != null and banner != ''"> and banner = #{banner} </if>
+	  		  		<if test="starttime != null and starttime != ''">
+		     		<![CDATA[ AND starttime>= #{starttime}]]>
+				  </if>
+			
+				  <if test="endtime != null and endtime != ''">
+		     		<![CDATA[AND endtime <= CONCAT(#{endtime},' 23:59:59') ]]>
+				  </if>
+		  		  <if test="text != null and text != ''"> and text = #{text} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="createUser != null and createUser != ''"> and create_user = #{createUser} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="updateUser != null and updateUser != ''"> and update_user = #{updateUser} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="salestatus != null and salestatus != ''"> and sale_status = #{salestatus} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.banner.domain.AdvertisePictureDO" useGeneratedKeys="true" keyProperty="id">
+		insert into ywms_advertise_picture
+		(
+			`pic_name`, 
+			`pic_url`, 
+			`pic_deposit_url`, 
+			`sort_no`, 
+			`banner`, 
+			`starttime`, 
+			`endtime`, 
+			`text`, 
+			`create_time`, 
+			`create_user`, 
+			`update_time`, 
+			`update_user`, 
+			`status`,
+			`sale_status`
+		)
+		values
+		(
+			#{picName}, 
+			#{picUrl}, 
+			#{picDepositUrl}, 
+			#{sortNo}, 
+			#{banner}, 
+			#{starttime}, 
+			#{endtime}, 
+			#{text}, 
+			#{createTime}, 
+			#{createUser}, 
+			#{updateTime}, 
+			#{updateUser}, 
+			#{status},
+			#{salestatus}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.banner.domain.AdvertisePictureDO">
+		update ywms_advertise_picture 
+		<set>
+			<if test="picName != null">`pic_name` = #{picName}, </if>
+			<if test="picUrl != null">`pic_url` = #{picUrl}, </if>
+			<if test="picDepositUrl != null">`pic_deposit_url` = #{picDepositUrl}, </if>
+			<if test="sortNo != null">`sort_no` = #{sortNo}, </if>
+			<if test="banner != null">`banner` = #{banner}, </if>
+			<if test="starttime != null">`starttime` = #{starttime}, </if>
+			<if test="endtime != null">`endtime` = #{endtime}, </if>
+			<if test="text != null">`text` = #{text}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="createUser != null">`create_user` = #{createUser}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="updateUser != null">`update_user` = #{updateUser}, </if>
+			<if test="status != null">`status` = #{status},</if>
+			<if test="salestatus != null">sale_status = #{salestatus} </if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		update ywms_advertise_picture set status='0' where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from ywms_advertise_picture where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<update id="batchOnline" parameterType="java.util.ArrayList">
+		update ywms_advertise_picture set sale_status =#{status} where id in 
+		<foreach item="did" collection="ids" index="index" open="(" separator="," close=")">
+			#{did}
+		</foreach>
+	</update>
+
+</mapper>

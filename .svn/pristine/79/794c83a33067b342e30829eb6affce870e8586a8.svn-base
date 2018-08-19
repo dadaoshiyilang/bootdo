@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${ywmsPresentList.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">礼物名称：</label>
+								<div class="col-sm-8">
+									<input id="presentname" name="presentname" th:value="${ywmsPresentList.presentname}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">礼物图片地址：</label>
+								<div class="col-sm-8">
+									<input id="presenturl" name="presenturl" th:value="${ywmsPresentList.presenturl}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">礼物价格：</label>
+								<div class="col-sm-8">
+									<input id="presentprice" name="presentprice" th:value="${ywmsPresentList.presentprice}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">状态(1.在线,0.下线)：</label>
+								<div class="col-sm-8">
+									<input id="presentstatus" name="presentstatus" th:value="${ywmsPresentList.presentstatus}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">开始时间：</label>
+								<div class="col-sm-8">
+									<input id="starttime" name="starttime" th:value="${ywmsPresentList.starttime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">结束时间：</label>
+								<div class="col-sm-8">
+									<input id="endtime" name="endtime" th:value="${ywmsPresentList.endtime}" class="form-control" type="text">
+								</div>
+							</div>
+
+
+
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">排序：</label>
+								<div class="col-sm-8">
+									<input id="ordernum" name="ordernum" th:value="${ywmsPresentList.ordernum}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">删除标记：</label>
+								<div class="col-sm-8">
+									<input id="del" name="del" th:value="${ywmsPresentList.del}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsPresentList/edit.js">
+	</script>
+</body>
+</html>

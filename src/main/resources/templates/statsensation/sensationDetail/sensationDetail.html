@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" type="text/css" href="/css/sensation/layui.css">
+<link rel="stylesheet" type="text/css" href="/css/sensation/laydate.css">
+<link rel="stylesheet" type="text/css" href="/css/sensation/shijian.css">
+<style>
+.ywmsCoin header .col-xs-2{
+	text-align:center;
+}
+  .content{
+    height: 30px;
+    line-height: 30px;
+    margin-top: 25px;
+  }
+   .content div{
+      text-align: center;
+      color: white;
+      font-size:16px;
+      font-weight: 500;
+    }
+    .personfind{
+    	width:100%;
+    	border:1px solid rgb(238,238,238);
+    }
+    .personfind tr{
+    	width:100%;
+    	
+    }
+    .personfind tr:nth-child(2){
+    	border:1px solid rgb(238,238,238);
+    }
+    .personfind tr:nth-child(2) td{
+    	border-right:1px solid rgb(238,238,238);
+    }
+    .personfind tr td{
+    	width:10%;
+    	text-align:center;	
+    }
+        .on{
+    	background:red!important;
+    }
+</style>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content">
+		<div class="col-sm-12">
+			<table border="1" style="background:rgb(243,243,243);outline:none;resize:none;border:none;">
+				<tr height="50">
+					<td class='col-xs-1'>网红机构名称: </td>
+					<td class='col-xs-2'><input id="whname" type="text" th:value="${sensationDo.whname}" readonly 
+					style="background: rgb(243,243,243);outline:none;resize:none;border:none;"></td>
+					<td class='col-xs-1'>下属员工(人): </td>
+					<td class='col-xs-1'><input id="whnums" type="text" th:value="${sensationDo.whnums}" readonly 
+					style="background: rgb(243,243,243);outline:none;resize:none;border:none;"></td>
+					<td class='col-xs-2'>历史总收益(缘豆): </td>
+					<td class='col-xs-2'><input id="earningsTotal" type="text" th:value="${sensationDo.earningsTotal}" readonly 
+					style="background: rgb(243,243,243);outline:none;resize:none;border:none;"></td>
+					<td class='col-xs-1'>已提现(元): </td>
+					<td class='col-xs-1'><input id="whnums" type="text" th:value="${sensationDo.whnums}" readonly 
+					style="background: rgb(243,243,243);outline:none;resize:none;border:none;"></td>
+				</tr>
+			</table>
+			<input id="whid" type="hidden" class="form-control" placeholder="" th:value=${sensationDo.whid}>
+			<input id="touserid" type="hidden" class="form-control" placeholder="" th:value=${userid}>
+			<input id="yyid" type="hidden" class="form-control" placeholder="" th:value=${yyid}>
+			<input id="flag" type="hidden" class="form-control" placeholder="" th:value =${flag}>
+			<input id="dateTime" type="hidden" class="form-control" placeholder="" th:value=${dateTime}>
+		</div>
+
+		<div class="col-sm-12" id="app">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div style="margin-top: 10px" id="today">
+						<table style="margin-top:20px;" class="personfind">
+							<tr style="height:34px; background:rgb(238,238,238)" >
+								<td>网红头像</td>
+								<td>眼缘id</td>
+								<td>网红昵称</td>
+								<td>当日总收益</td>
+								<td>视频聊天收益</td>
+								<td>语音聊天收益</td>
+								<td>专辑动态收益</td>
+								<td>视频动态收益</td>
+								<td>礼物收益</td>
+								<td>备注</td>
+							</tr>
+							<tr style="height:60px;">
+								<td>
+									<img v-bind:src="portraiturl" style="weight:60px;height:60px;"/>
+								</td>
+								<td>{{yyid}}</td>
+								<td style="color:#4038a5">{{nickname}}</td>
+								<td>{{total_income||0}}</td>
+								<td>{{vedio_total||0}}</td>
+								<td>{{voice_total||0}}</td>
+								<td>{{album_total||0}}</td>
+								<td>{{vedio_dynamics_total||0}}</td>
+								<td>{{gift_total||0}}</td>
+								<td>{{remark}}</td>
+							</tr>
+					 	</table>
+					</div>
+				    <div class="content container-fluid sen_date">
+		        		<div class='col-xs-2' style="background: rgb(64,56,165);color:white;">
+		        			<template v-if="flag==0||flag==1">
+			        			<span>当日总收益</span>
+			        			<p>{{total_income||0}}</p>
+		        			</template>
+		        			<template v-if="flag==2">
+			        			<span>当月总收益</span>
+			        			<p>{{total_income||0}}</p>
+		        			</template>
+		        			<template v-if="flag==3">
+			        			<span>当年总收益</span>
+			        			<p>{{total_income||0}}</p>
+		        			</template>
+		        		</div>
+		        		<div class='col-xs-2' style="background: rgb(156,162,168);color:black" id ="1"><span>视频聊天收益</span><p>{{vedio_total||0}}</p></div>
+		        		<div class='col-xs-2' style="background: rgb(156,162,168);color:black" id ="2"><span>语音聊天收益</span><p>{{voice_total||0}}</p></div>
+		        		<div class='col-xs-2' style="background: rgb(156,162,168);color:black" id ="3"><span>专辑动态收益</span><p>{{album_total||0}}</p></div>
+		        		<div class='col-xs-2' style="background: rgb(156,162,168);color:black" id ="4"><span>视频动态收益</span><p>{{vedio_dynamics_total||0}}</p></div>
+		        		<div class='col-xs-2' style="background: rgb(156,162,168);color:black" id ="5"><span>礼物收益</span><p>{{gift_total||0}}</p></div>
+	    			</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="statsensation:sensationDetail:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="statsensation:sensationDetail:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="statsensation:sensationDetail:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script src="/js/appjs/statsensation/sensationDetail/vue.min.js"></script>
+	<script src="/js/appjs/statsensation/sensationDetail/vue-resource.min.js"></script>
+	<script src="/js/appjs/statsensation/sensationDetail/jquer_shijian.js"></script>
+	<script src="/js/appjs/statsensation/sensationDetail/layui.all.js"></script>
+	<script type="text/javascript" src="/js/appjs/statsensation/sensationDetail/sensationDetail.js"></script>
+	<script>
+	new Vue({
+	    el:'#app',
+	    data() {
+	        return {
+	          active: '未激活',
+	          yyid:'',
+	          nickname:'',
+	          portraiturl:'',
+	          vedio_total:'',
+	          voice_total:'',
+	          album_total:'',
+	          vedio_dynamics_total:'',
+	          gift_total:'',
+	          total_income:'',
+	          remark:'',
+	          flag:''
+	        }
+	      },
+	        ready: function () {
+	            this.load1();
+	        },
+	      methods:{
+	    	   load1:function(){
+	    		   var vm = this;
+	    		   vm.$http.get("/statsensation/sensationDetail/getwhuserInfo", {
+	                    params: {
+	                        'inputValue':$('#dateTime').val(),
+	                        'whid':$('#whid').val(),
+	                        'yyid':$('#yyid').val(),
+	                        'flag':$('#flag').val()
+	                    }
+	                }).then(function (response) {
+	                	var re = response.json();
+	                	console.log(re);
+	                	if (re.code == 0) {
+	                		this.yyid=re.yyid;
+	                		this.nickname=re.nickname;
+	                		this.portraiturl="https://woyaoyue1221.oss-cn-shanghai.aliyuncs.com"+"/"+re.portraiturl;
+	                		console.log(this.portraiturl);
+	                		this.total_income=re.total_income;
+	                		this.vedio_total=re.vedio_total;
+	                		this.voice_total=re.voice_total;
+	                		this.album_total=re.album_total;
+	                		this.vedio_dynamics_total=re.vedio_dynamics_total;
+	                		this.gift_total=re.gift_total;
+	                		this.remark=re.remark;
+	                		this.flag=re.flag;
+	                	}
+	                });
+	    	}
+	      },
+	      mounted(){
+			  this.load1();
+	      }
+	})
+	</script>
+	<script type="text/javascript">
+		$('body').on("click",'.sen_date div',function(){
+			$(this).addClass("on").siblings().removeClass('on')
+			$("#flag").val($(this).attr('id'));
+			$('#exampleTable').bootstrapTable('refresh'); 
+		})
+	</script>
+</body>
+</html>

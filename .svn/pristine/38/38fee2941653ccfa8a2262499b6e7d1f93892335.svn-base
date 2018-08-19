@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<input id="yyid" type="text" class="form-control"
+								placeholder="眼缘ID">
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<input id="phonenumber" type="text" class="form-control"
+								placeholder="手机号码">
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<input id="nickname" type="text" class="form-control"
+								placeholder="用户昵称">
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<select id="usersex" class="form-control" name="usersex" placeholder="用户昵称">
+								<option value="">性别</option>
+                            	<option value="0">女</option>
+                            	<option value="1">男</option>
+                             </select>
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<select id="authstatus" class="form-control" name="authstatus" placeholder="审核状态">
+								<option value="">审核状态</option>
+                            	<option value="0">认证失败</option>
+                            	<option value="1">认证成功</option>
+                            	<option value="2">认证中</option>
+                             </select>
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="review:authentication:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="review:authentication:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="review:authentication:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/review/authentication/authenticadetail.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button shiro:hasPermission="ywms:ywmsPresentList:add" type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>添加
+							</button>
+							<button shiro:hasPermission="ywms:ywmsPresentList:onlineup" type="button" class="btn  btn-primary"
+									onclick="batchUp(1)">
+								<i class="fa fa-plus" aria-hidden="true"></i>上线
+							</button>
+							<button shiro:hasPermission="ywms:ywmsPresentList:onlinedown" type="button" class="btn  btn-danger"
+									onclick="batchDown(0)">
+								<i class="fa fa-trash" aria-hidden="true"></i>下线
+							</button>
+							<button shiro:hasPermission="ywms:ywmsPresentList:batchRemove" type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+						</div>
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<input id="presentname" type="text" class="form-control"
+								   placeholder="礼物名称">
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<select id="presentstatus" class="form-control" name="presentstatus">
+								<option value="">礼物状态</option>
+								<option value="1">在线</option>
+								<option value="0">下线</option>
+							</select>
+						</div>
+
+						<div class="columns pull-left col-md-2 nopadding">
+							<input style="margin-top: 5px;" placeholder="上架时间" id="starttime" type="date" value=""/>
+						</div>
+
+						<div class="columns pull-left col-md-2 nopadding">
+								<input style="margin-top: 5px;" id="endtime" placeholder="下架时间" type="date" value=""/>
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywms:ywmsPresentList:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywms:ywmsPresentList:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywms:ywmsPresentList:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/ywms/ywmsPresentList/ywmsPresentList.js"></script>
+
+
+</body>
+</html>

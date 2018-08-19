@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+	.tr td:nth-child(2){
+		display:block;
+		background:red;
+	}
+</style>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button shiro:hasPermission="review:dataPhotoVedio:pass" type="button" class="btn  btn-primary" 
+								onclick="batchPass(100)"><i aria-hidden="true"></i>通过
+							</button>
+							<button shiro:hasPermission="review:dataPhotoVedio:batchRemove1" type="button" class="btn  btn-danger"
+								onclick="batchRemove1(101)"><i aria-hidden="true"></i>暴露或低俗
+							</button>
+							<button shiro:hasPermission="review:dataPhotoVedio:batchRemove2" type="button" class="btn  btn-danger"
+								onclick="batchRemove2(101)"><i aria-hidden="true"></i>广告
+							</button>
+							<button shiro:hasPermission="review:dataPhotoVedio:batchRemove3" type="button" class="btn  btn-danger"
+								onclick="batchRemove3(101)"><i aria-hidden="true"></i>不可选
+							</button>
+						</div>
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<div class="columns pull-right col-md-2 nopadding">
+							<input id="yyid" type="text" class="form-control"
+								placeholder="眼缘Id">
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="review:dataPhotoVedio:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="review:dataPhotoVedio:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="review:dataPhotoVedio:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/review/dataPhotoVedio/dataPhotoVedio.js"></script>
+
+</body>
+</html>

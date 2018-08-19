@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" type="text/css" href="/js/appjs/banner/advertisePicture/layui.css" />
+<link rel="stylesheet" type="text/css" href="/js/appjs/banner/advertisePicture/laydate.css" />
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button shiro:hasPermission="banner:advertisePicture:add" type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>添加
+							</button>
+							<button shiro:hasPermission="banner:advertisePicture:onlineup" type="button" class="btn  btn-primary"
+								onclick="batchUp(1)">
+								<i class="fa fa-plus" aria-hidden="true"></i>上线
+							</button>
+							<button shiro:hasPermission="banner:advertisePicture:onlinedown" type="button" class="btn  btn-danger"
+								onclick="batchDown(2)">
+								<i class="fa fa-trash" aria-hidden="true"></i>下线
+							</button>
+						</div>
+						<div class="columns pull-right">
+							<button class="btn btn-success" onclick="reLoad()">查询</button>
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<input id="picName" type="text" class="form-control"
+								placeholder="广告标题">
+						</div>
+						<div class="columns pull-left col-md-2 nopadding">
+							<select id="salestatus" class="form-control" name="salestatus">
+								<option value="">广告状态</option>
+                            	<option value="0">未上架</option>
+                            	<option value="1">已上架</option>
+                            	<option value="2">下架</option>
+                             </select>
+						</div>
+						
+						<div class="columns pull-left col-md-2 nopadding">
+							<input type="text" name="starttime" id="starttime" lay-verify="date" placeholder="展示日期开始时间" autocomplete="off" class="form-control">
+						</div>
+						
+						<div class="columns pull-left col-md-2 nopadding">
+							<input type="text" name="endtime" id="endtime" lay-verify="date" placeholder="展示日期结束时间" autocomplete="off" class="form-control">
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="banner:advertisePicture:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="banner:advertisePicture:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="banner:advertisePicture:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/banner/advertisePicture/advertisePicture.js"></script>
+	<script src="/js/appjs/banner/advertisePicture/layui.all.js"></script>
+	<script>
+	layui.use(['form', 'layedit', 'laydate'], function(){
+		  var form = layui.form
+		  ,layer = layui.layer
+		  ,layedit = layui.layedit
+		  ,laydate = layui.laydate;
+		  //设置开始时间
+		  var startDate = laydate.render({
+		      elem: '#starttime',
+		      done: function (value, date) {
+		          if (value !== '') {
+		              endDate.config.min.year = date.year;
+		              endDate.config.min.month = date.month - 1;
+		              endDate.config.min.date = date.date;
+		          } else {
+		              endDate.config.min.year = '';
+		              endDate.config.min.month = '';
+		              endDate.config.min.date = '';
+		          }
+		      }
+		  });
+
+		  //设置结束时间
+		  var endDate = laydate.render({
+		      elem: '#endtime',
+		      done: function (value, date) {
+		          if (value !== '') {
+		              startDate.config.max.year = date.year;
+		              startDate.config.max.month = date.month - 1;
+		              startDate.config.max.date = date.date;
+		          } else {
+		              startDate.config.max.year ='';
+		              startDate.config.max.month ='';
+		              startDate.config.max.date ='';
+		          }
+		      }
+		  });
+		  
+		});
+	</script>
+</body>
+</html>

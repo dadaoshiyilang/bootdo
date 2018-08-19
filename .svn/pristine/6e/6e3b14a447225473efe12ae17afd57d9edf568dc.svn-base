@@ -1,0 +1,35 @@
+package com.bootdo.ywms.service;
+
+import com.bootdo.ywms.domain.YwmsUserDO;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 
+ * 
+ * @author fff
+ * @email 1992lcg@163.com
+ * @date 2018-07-05 15:03:23
+ */
+public interface YwmsUserService {
+	
+	YwmsUserDO get(Integer userid);
+	
+	List<YwmsUserDO> list(Map<String, Object> map);
+	
+	int count(Map<String, Object> map);
+	
+	int save(YwmsUserDO ywmsUser);
+	
+	int update(YwmsUserDO ywmsUser);
+
+
+
+
+	int remove(Integer userid);
+
+	int editfreeze( YwmsUserDO ywmsUser);
+
+	int batchRemove(Integer[] userids);
+}

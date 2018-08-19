@@ -1,0 +1,73 @@
+$().ready(function() {
+	validateRule();
+});
+
+function fun1(){
+
+	var choose = $('#choose option:selected').val();
+
+	if (choose==0){
+		document.getElementById("yy").style.display = "inline"//显示
+		document.getElementById("touserid").style.display = "inline"//显示
+		document.getElementById("yy1").style.display = "none"//不显示
+		document.getElementById("userids").style.display = "none"//不显示
+	}else if(choose==2){
+		document.getElementById("yy1").style.display = "inline"//显示
+		document.getElementById("userids").style.display = "inline"//显示
+		document.getElementById("yy").style.display = "none"//不显示
+		document.getElementById("touserid").style.display = "none"//不显示
+	}else{
+		document.getElementById("yy").style.display = "none"//不显示
+		document.getElementById("touserid").style.display = "none"//不显示
+		document.getElementById("yy1").style.display = "none"//不显示
+		document.getElementById("userids").style.display = "none"//不显示
+	}
+}
+
+$.validator.setDefaults({
+	submitHandler : function() {
+		save();
+	}
+});
+function save() {
+	$.ajax({
+		cache : true,
+		type : "POST",
+		url : "/ywms/ywmsJiguanginfo/push",
+		data:{
+			touserid:$('#touserid').val(),
+			userids:$('#userids').val(),
+			choose:$('#choose option:selected').val(),
+			commentcontext:$('#commentcontext').val()
+		},
+		async : false,
+		error : function(request) {
+			parent.layer.alert("Connection error");
+		},
+		success : function(data) {
+			if (data.code == 0) {
+				parent.layer.msg("操作成功");
+				location.reload();
+			} else {
+				parent.layer.alert(data.msg)
+			}
+
+		}
+	});
+
+}
+function validateRule() {
+	var icon = "<i class='fa fa-times-circle'></i> ";
+	$("#signupForm").validate({
+		rules : {
+			name : {
+				required : true
+			}
+		},
+		messages : {
+			name : {
+				required : icon + "请输入姓名"
+			}
+		}
+	})
+}

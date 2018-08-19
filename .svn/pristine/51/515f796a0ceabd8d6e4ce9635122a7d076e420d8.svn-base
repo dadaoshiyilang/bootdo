@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content ">
+	<div class="col-sm-12">
+		<div class="ibox">
+			<div class="ibox-body">
+				< class="fixed-table-toolbar">
+					<div class="columns pull-left">
+						<button shiro:hasPermission="ywms:ywmsUser:add" type="button" class="btn  btn-primary" onclick="add()">
+							<i class="fa fa-plus" aria-hidden="true"></i>添加
+						</button>
+						<button shiro:hasPermission="ywms:ywmsUser:batchRemove" type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+							<i class="fa fa-trash" aria-hidden="true"></i>删除
+						</button>
+					</div>
+					<div class="columns pull-right">
+						<button class="btn btn-success" onclick="reLoad()">查询</button>
+					</div>
+					<div class="columns pull-left col-md-1 nopadding">
+						<input id="searchyyid" type="text" class="form-control"
+							   placeholder="眼缘id">
+					</div>
+					<div class="columns pull-left col-md-1 nopadding">
+						<input id="searchphonenumber" type="text" class="form-control"
+							   placeholder="电话">
+					</div>
+					<div class="columns pull-left col-md-1 nopadding">
+						<input id="searchnickname" type="text" class="form-control"
+							   placeholder="昵称">
+					</div>
+					<div class="columns pull-left col-md-1 nopadding">
+						<select data-placeholder="选择性别" id="searchusersex"  class="form-control usersex"
+								tabindex="2" style="width: 100%">
+							<option value="">选择性别</option>
+							<option value="0">女</option>
+							<option value="1">男</option>
+						</select>
+					</div>
+
+
+
+					<div class="columns pull-left col-md-2 nopadding">
+						<select data-placeholder="选择用户状态" id="searchdeleteflag"  class="form-control deleteflag"
+								tabindex="2" style="width: 100%">
+							<option value="">选择用户状态</option>
+							<option value="0">冻结停用</option>
+							<option value="1">正常</option>
+						</select>
+					</div>
+
+
+
+				</div>
+				<table id="exampleTable" data-mobile-responsive="true">
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+<div>
+	<script type="text/javascript">
+		var s_look_h = 'hidden';
+		var s_edit_h = 'hidden';
+		var s_remove_h = 'hidden';
+		var s_resetPwd_h = 'hidden';
+		var s_freeze_h = 'hidden';
+		var s_updaterecharge_h = 'hidden';
+	</script>
+</div>
+<div shiro:hasPermission="ywms:ywmsUser:look">
+	<script type="text/javascript">
+		s_look_h = '';
+	</script>
+</div>
+<div shiro:hasPermission="ywms:ywmsUser:edit">
+	<script type="text/javascript">
+		s_edit_h = '';
+	</script>
+</div>
+<div shiro:hasPermission="ywms:ywmsUser:remove">
+	<script type="text/javascript">
+		var s_remove_h = '';
+	</script>
+</div>
+<div shiro:hasPermission="ywms:ywmsUser:resetPwd">
+	<script type="text/javascript">
+		var s_resetPwd_h = '';
+	</script>
+</div>
+<div shiro:hasPermission="ywms:ywmsUser:freeze">
+	<script type="text/javascript">
+		var s_freeze_h = '';
+	</script>
+</div>
+<div shiro:hasPermission="ywms:ywmsUser:updaterecharge">
+	<script type="text/javascript">
+		var s_updaterecharge_h = '';
+	</script>
+</div>
+</div>
+<div th:include="include :: footer"></div>
+<script type="text/javascript" src="/js/appjs/ywms/ywmsUser/ywmsUser.js"></script>
+</body>
+</html>

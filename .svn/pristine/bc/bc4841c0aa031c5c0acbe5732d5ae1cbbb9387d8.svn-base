@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.statsensation.dao.SensationDailyDao">
+
+	<select id="get" resultType="com.bootdo.statsensation.domain.SensationDailyDO">
+		select `id`,`whid`,`whname`,`userid`,`yyid`,`nickname`,`portraiturl`,`vedio_total`,`voice_total`,`album_total`,`vedio_dynamics_total`,`total_income`,`create_time`,`update_time`,`status`,`remark` from stat_sensation_daily where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.statsensation.domain.SensationDailyDO">
+		select `id`,`whid`,`whname`,`userid`,`yyid`,`nickname`,`portraiturl`,`vedio_total`,`voice_total`,`album_total`,`vedio_dynamics_total`,`total_income`,`create_time`,`update_time`,`status`,`remark` from stat_sensation_daily
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="whid != null and whid != ''"> and whid = #{whid} </if>
+		  		  <if test="whname != null and whname != ''"> and whname = #{whname} </if>
+		  		  <if test="userid != null and userid != ''"> and userid = #{userid} </if>
+		  		  <if test="yyid != null and yyid != ''"> and yyid = #{yyid} </if>
+		  		  <if test="nickname != null and nickname != ''"> and nickname = #{nickname} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and portraiturl = #{portraiturl} </if>
+		  		  <if test="vedioTotal != null and vedioTotal != ''"> and vedio_total = #{vedioTotal} </if>
+		  		  <if test="voiceTotal != null and voiceTotal != ''"> and voice_total = #{voiceTotal} </if>
+		  		  <if test="albumTotal != null and albumTotal != ''"> and album_total = #{albumTotal} </if>
+		  		  <if test="vedioDynamicsTotal != null and vedioDynamicsTotal != ''"> and vedio_dynamics_total = #{vedioDynamicsTotal} </if>
+		  		  <if test="totalIncome != null and totalIncome != ''"> and total_income = #{totalIncome} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from stat_sensation_daily
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="whid != null and whid != ''"> and whid = #{whid} </if>
+		  		  <if test="whname != null and whname != ''"> and whname = #{whname} </if>
+		  		  <if test="userid != null and userid != ''"> and userid = #{userid} </if>
+		  		  <if test="yyid != null and yyid != ''"> and yyid = #{yyid} </if>
+		  		  <if test="nickname != null and nickname != ''"> and nickname = #{nickname} </if>
+		  		  <if test="portraiturl != null and portraiturl != ''"> and portraiturl = #{portraiturl} </if>
+		  		  <if test="vedioTotal != null and vedioTotal != ''"> and vedio_total = #{vedioTotal} </if>
+		  		  <if test="voiceTotal != null and voiceTotal != ''"> and voice_total = #{voiceTotal} </if>
+		  		  <if test="albumTotal != null and albumTotal != ''"> and album_total = #{albumTotal} </if>
+		  		  <if test="vedioDynamicsTotal != null and vedioDynamicsTotal != ''"> and vedio_dynamics_total = #{vedioDynamicsTotal} </if>
+		  		  <if test="totalIncome != null and totalIncome != ''"> and total_income = #{totalIncome} </if>
+		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
+		  		  <if test="updateTime != null and updateTime != ''"> and update_time = #{updateTime} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="remark != null and remark != ''"> and remark = #{remark} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.statsensation.domain.SensationDailyDO" useGeneratedKeys="true" keyProperty="id">
+		insert into stat_sensation_daily
+		(
+			`whid`, 
+			`whname`, 
+			`userid`, 
+			`yyid`, 
+			`nickname`, 
+			`portraiturl`, 
+			`vedio_total`, 
+			`voice_total`, 
+			`album_total`, 
+			`vedio_dynamics_total`, 
+			`total_income`, 
+			`create_time`, 
+			`update_time`, 
+			`status`, 
+			`remark`
+		)
+		values
+		(
+			#{whid}, 
+			#{whname}, 
+			#{userid}, 
+			#{yyid}, 
+			#{nickname}, 
+			#{portraiturl}, 
+			#{vedioTotal}, 
+			#{voiceTotal}, 
+			#{albumTotal}, 
+			#{vedioDynamicsTotal}, 
+			#{totalIncome}, 
+			#{createTime}, 
+			#{updateTime}, 
+			#{status}, 
+			#{remark}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.statsensation.domain.SensationDailyDO">
+		update stat_sensation_daily 
+		<set>
+			<if test="whid != null">`whid` = #{whid}, </if>
+			<if test="whname != null">`whname` = #{whname}, </if>
+			<if test="userid != null">`userid` = #{userid}, </if>
+			<if test="yyid != null">`yyid` = #{yyid}, </if>
+			<if test="nickname != null">`nickname` = #{nickname}, </if>
+			<if test="portraiturl != null">`portraiturl` = #{portraiturl}, </if>
+			<if test="vedioTotal != null">`vedio_total` = #{vedioTotal}, </if>
+			<if test="voiceTotal != null">`voice_total` = #{voiceTotal}, </if>
+			<if test="albumTotal != null">`album_total` = #{albumTotal}, </if>
+			<if test="vedioDynamicsTotal != null">`vedio_dynamics_total` = #{vedioDynamicsTotal}, </if>
+			<if test="totalIncome != null">`total_income` = #{totalIncome}, </if>
+			<if test="createTime != null">`create_time` = #{createTime}, </if>
+			<if test="updateTime != null">`update_time` = #{updateTime}, </if>
+			<if test="status != null">`status` = #{status}, </if>
+			<if test="remark != null">`remark` = #{remark}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from stat_sensation_daily where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from stat_sensation_daily where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

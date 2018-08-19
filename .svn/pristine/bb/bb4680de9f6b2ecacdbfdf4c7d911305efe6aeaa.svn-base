@@ -1,0 +1,148 @@
+package com.bootdo.ywms.controller;
+
+import com.bootdo.common.utils.PageUtils;
+import com.bootdo.common.utils.Query;
+import com.bootdo.common.utils.R;
+import com.bootdo.ywms.domain.YwmsPhotoReviewDO;
+import com.bootdo.ywms.service.YwmsPhotoReviewService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 头像审核表
+ * 
+ * @author fff
+ * @email 1992lcg@163.com
+ * @date 2018-07-11 16:10:11
+ */
+ 
+@Controller
+@RequestMapping("/ywms/ywmsPhotoReview")
+public class YwmsPhotoReviewController {
+	@Autowired
+	private YwmsPhotoReviewService ywmsPhotoReviewService;
+	@GetMapping()
+	@RequiresPermissions("ywms:ywmsPhotoReview:ywmsPhotoReview")
+	String YwmsPhotoReview(){
+	    return "ywms/ywmsPhotoReview/ywmsPhotoReview";
+	}
+	
+	@ResponseBody
+	@GetMapping("/list")
+	@RequiresPermissions("ywms:ywmsPhotoReview:ywmsPhotoReview")
+	public PageUtils list(@RequestParam Map<String, Object> params){
+		//查询列表数据
+        Query query = new Query(params);
+		List<YwmsPhotoReviewDO> ywmsPhotoReviewList = ywmsPhotoReviewService.list(query);
+		int total = ywmsPhotoReviewService.count(query);
+		PageUtils pageUtils = new PageUtils(ywmsPhotoReviewList, total);
+		return pageUtils;
+	}
+	
+	@GetMapping("/add")
+	@RequiresPermissions("ywms:ywmsPhotoReview:add")
+	String add(){
+	    return "ywms/ywmsPhotoReview/add";
+	}
+
+	@GetMapping("/edit/{id}")
+	@RequiresPermissions("ywms:ywmsPhotoReview:edit")
+	String edit(@PathVariable("id") Long id,Model model){
+		YwmsPhotoReviewDO ywmsPhotoReview = ywmsPhotoReviewService.get(id);
+		model.addAttribute("ywmsPhotoReview", ywmsPhotoReview);
+	    return "ywms/ywmsPhotoReview/edit";
+	}
+	
+	/**
+	 * 保存
+	 */
+	@ResponseBody
+	@PostMapping("/save")
+	@RequiresPermissions("ywms:ywmsPhotoReview:add")
+	public R save( YwmsPhotoReviewDO ywmsPhotoReview){
+		if(ywmsPhotoReviewService.save(ywmsPhotoReview)>0){
+			return R.ok();
+		}
+		return R.error();
+	}
+	/**
+	 * 修改
+	 */
+	@ResponseBody
+	@RequestMapping("/update")
+	@RequiresPermissions("ywms:ywmsPhotoReview:edit")
+	public R update( YwmsPhotoReviewDO ywmsPhotoReview){
+		ywmsPhotoReviewService.update(ywmsPhotoReview);
+		return R.ok();
+	}
+	
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/remove")
+	@ResponseBody
+	@RequiresPermissions("ywms:ywmsPhotoReview:remove")
+	public R remove( Long id){
+		if(ywmsPhotoReviewService.remove(id)>0){
+		return R.ok();
+		}
+		return R.error();
+	}
+
+
+	/**
+	 * 不通过头像跟换
+	 */
+	@PostMapping( "/no")
+	@ResponseBody
+	public R no( Long id){
+		if(ywmsPhotoReviewService.no(id)>0){
+			return R.ok();
+		}
+		return R.error();
+	}
+
+	/**
+	 * 通过头像跟换
+	 */
+	@PostMapping( "/yes")
+	@ResponseBody
+	public R yes(YwmsPhotoReviewDO ywmsPhotoReview){
+		if(ywmsPhotoReviewService.yes(ywmsPhotoReview)>0){
+
+			return R.ok();
+		}
+		return R.error();
+	}
+
+
+	/**
+	 * 删除
+	 */
+	@PostMapping( "/batchRemove")
+	@ResponseBody
+	@RequiresPermissions("ywms:ywmsPhotoReview:batchRemove")
+	public R remove(@RequestParam("ids[]") Long[] ids){
+		ywmsPhotoReviewService.batchRemove(ids);
+		return R.ok();
+	}
+
+
+	/**
+	 * 审核通过
+	 */
+	@PostMapping( "/batchPass")
+	@ResponseBody
+	@RequiresPermissions("ywms:ywmsPhotoReview:pass")
+	public R pass(@RequestParam("ids[]") Integer[] dids, @RequestParam("status") String status){
+		ywmsPhotoReviewService.batchPass(dids, status);
+		return R.ok();
+	}
+	
+}
